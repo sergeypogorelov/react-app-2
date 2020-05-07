@@ -27,15 +27,16 @@
           }
         }
 
-        const reactElement = React.createElement(
-          'h1',
-          null,
-          React.createElement(HelloWord),
-          ' ',
-          React.createElement(WorldWord)
-        );
+        const App = () =>
+          React.createElement(
+            'h1',
+            null,
+            React.createElement(HelloWord),
+            ' ',
+            React.createElement(WorldWord)
+          );
 
-        ReactDOM.render(reactElement, d.getElementById('root'));
+        ReactDOM.render(React.createElement(App), d.getElementById('root'));
       })(window, document);
     </script>
   </body>
