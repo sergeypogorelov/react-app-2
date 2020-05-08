@@ -4,11 +4,16 @@
   "description": "A simple React application with Redux, TypeScript and Server Side Rendering",
   "scripts": {
     "start": "npm run build && npm run start-server",
-    "start-server": "npm config set react-app-2:ENV_NODE_ENV DEV && node src/server/index.js",
+    "start:prod": "npm run build:prod && npm run start-server:prod",
+    "start-server": "npm config set react-app-2:ENV DEV && node src/server/index.js",
+    "start-server:prod": "npm config set react-app-2:ENV PROD && node src/server/index.js",
     "prebuild": "npm run clean",
     "build": "webpack --config webpack/webpack.config.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf ./build-dev && mkdir build-dev"
+    "prebuild:prod": "npm run clean:prod",
+    "build:prod": "webpack --config webpack/webpack.config.prod.js",
+    "clean": "rimraf ./build-dev && mkdir build-dev",
+    "clean:prod": "rimraf ./build-prod && mkdir build-prod",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

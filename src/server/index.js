@@ -8,7 +8,9 @@ const foldersByEnv = {
   PROD: 'build-prod',
 };
 
-const ENV = process.env.npm_package_config_ENV_NODE_ENV;
+console.log(process.env);
+
+const ENV = process.env.npm_package_config_ENV;
 const BUILD_FOLDER = foldersByEnv[ENV];
 
 const staticPath = path.resolve(__dirname, `../../${BUILD_FOLDER}`);
@@ -19,4 +21,6 @@ app.use('/', (req, res) => {
 });
 
 const port = 8080;
-app.listen(port, () => console.log(`Listening on ${port}.`));
+app.listen(port, () =>
+  console.log(`Client is built in ${ENV} mode. Server is listening on ${port}.`)
+);
