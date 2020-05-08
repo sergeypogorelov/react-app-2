@@ -1,4 +1,4 @@
-build-dev
-build-prod
+dist-dev
+dist-prod
 
 node_modules

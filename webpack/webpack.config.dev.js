@@ -8,7 +8,7 @@ module.exports = webpackMerge(webpackConfigCommon, {
   mode: 'development',
   devtool: 'inline-source-map',
   output: {
-    path: path.resolve(__dirname, '../build-dev'),
+    path: path.resolve(__dirname, '../dist-dev'),
     filename: '[name].bundle.js',
   },
   plugins: [

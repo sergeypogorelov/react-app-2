@@ -1,16 +1,14 @@
 const path = require('path');
 const express = require('express');
 
-const app = express();
-
 const foldersByEnv = {
-  DEV: 'build-dev',
-  PROD: 'build-prod',
+  DEV: 'dist-dev',
+  PROD: 'dist-prod',
 };
 
-console.log(process.env);
+const app = express();
 
-const ENV = process.env.npm_package_config_ENV;
+const ENV = process.env.NODE_APP_ENV;
 const BUILD_FOLDER = foldersByEnv[ENV];
 
 const staticPath = path.resolve(__dirname, `../../${BUILD_FOLDER}`);
