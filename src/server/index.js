@@ -18,7 +18,7 @@ app.use('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, `../../${BUILD_FOLDER}/index.html`));
 });
 
-const port = 8080;
+const port = 4200;
 app.listen(port, () =>
   console.log(`Client is built in ${ENV} mode. Server is listening on ${port}.`)
 );

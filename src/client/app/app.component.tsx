@@ -1,3 +1,5 @@
 import React from 'react';
 
-export const App = () => <h1>Hello World</h1>;
+import { AppProps } from './app-props.interface';
+
+export const App = (props: AppProps) => <h1>Hello {props.name}!</h1>;
