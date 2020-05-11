@@ -11,6 +11,31 @@ module.exports = webpackMerge(webpackConfigCommon, {
     path: path.resolve(__dirname, '../dist-dev'),
     filename: '[name].bundle.js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.(s?css)$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [require('precss'), require('autoprefixer')],
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
+        exclude: /node_modules/,
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/client/index.html'),
