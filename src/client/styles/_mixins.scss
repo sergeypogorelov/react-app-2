@@ -1,0 +1,13 @@
+@import './variables';
+
+@mixin ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin no-ellipsis {
+  white-space: normal;
+  text-overflow: clip;
+  overflow: visible;
+}

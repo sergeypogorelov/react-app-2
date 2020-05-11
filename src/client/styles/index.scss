@@ -1,5 +1,13 @@
-$var: red;
+@import './bootstrap';
 
-h1 {
-  color: $var;
+@import './variables';
+@import './functions';
+@import './mixins';
+
+/*
+  Global Styles
+*/
+
+.ellipsis {
+  @include ellipsis;
 }
