@@ -20,5 +20,7 @@ app.use('/', (req, res) => {
 
 const port = 4200;
 app.listen(port, () =>
-  console.log(`Client is built in ${ENV} mode. Server is listening on ${port}.`)
+  console.log(
+    `Client is built in ${ENV} mode. Server is listening on http://localhost:${port}`
+  )
 );
