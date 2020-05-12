@@ -11,3 +11,7 @@
 .ellipsis {
   @include ellipsis;
 }
+
+.modal {
+  background-color: blackColor(0.7);
+}
