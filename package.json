@@ -2,20 +2,28 @@
   "name": "react-app-2",
   "version": "1.0.0",
   "description": "A simple React application with Redux, TypeScript and Server Side Rendering",
-  "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && npm run start-server",
+    "start:prod": "npm run build:prod && npm run start-server:prod",
+    "start-server": "cross-env NODE_APP_ENV=DEV node src/server/index.js",
+    "start-server:prod": "cross-env NODE_APP_ENV=PROD node src/server/index.js",
+    "prebuild": "npm run clean",
+    "build": "webpack --config webpack/webpack.config.dev.js",
+    "prebuild:prod": "npm run clean:prod",
+    "build:prod": "webpack --config webpack/webpack.config.prod.js",
+    "clean": "rimraf ./dist-dev && mkdir dist-dev",
+    "clean:prod": "rimraf ./dist-prod && mkdir dist-prod",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sergeypogorelov/react-app-2.git"
   },
   "keywords": [
-    "React",
     "TypeScript",
-    "Server Side Rendering",
-    "Redux"
+    "React",
+    "Redux",
+    "Server Side Rendering"
   ],
   "author": "Sergey Pogorelov <sergey.pogorelov.93@gmail.com>",
   "license": "ISC",
@@ -24,7 +32,31 @@
   },
   "homepage": "https://github.com/sergeypogorelov/react-app-2#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "cross-env": "^7.0.2",
+    "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.0.1",
+    "rimraf": "^3.0.2",
+    "terser-webpack-plugin": "^3.0.1",
+    "ts-jest": "^25.5.1",
+    "ts-loader": "^7.0.3",
+    "typescript": "^3.8.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
+  },
+  "jest": {
+    "preset": "ts-jest"
   },
   "prettier": {
     "trailingComma": "es5",
