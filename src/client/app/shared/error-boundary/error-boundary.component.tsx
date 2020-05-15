@@ -4,9 +4,9 @@ import { ErrorBoundaryState } from './error-boundary-state.interface';
 
 import { ModalAlert } from '../modal-alert/modal-alert.component';
 
-export class ErrorBoundary extends React.Component<any, ErrorBoundaryState> {
+export class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
   state: ErrorBoundaryState = {
-    hasError: true,
+    hasError: false,
   };
 
   static getDerivedStateFromError(error: any): ErrorBoundaryState {
@@ -20,22 +20,18 @@ export class ErrorBoundary extends React.Component<any, ErrorBoundaryState> {
   }
 
   render() {
-    return (
-      <>
-        {this.state.hasError && (
-          <ModalAlert title="Error" onClose={this.handleOnModalClose}>
-            Something went wrong. Please, reload the page.
-          </ModalAlert>
-        )}
+    if (this.state.hasError) {
+      return (
+        <ModalAlert title="Error" onClose={this.handleOnModalClose}>
+          <p>Something went wrong. Click OK to reload the page.</p>
+        </ModalAlert>
+      );
+    }
 
-        {this.props.children}
-      </>
-    );
+    return this.props.children;
   }
 
   handleOnModalClose = () => {
-    this.setState({
-      hasError: false,
-    });
+    window.location.reload();
   };
 }
