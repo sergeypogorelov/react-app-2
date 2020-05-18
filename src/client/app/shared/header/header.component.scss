@@ -1,0 +1,31 @@
+@import '../../../styles/functions';
+
+$z-index-for-bg: 1;
+$z-index-for-content: $z-index-for-bg + 1;
+
+.header {
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: blackColor(0.9);
+    z-index: $z-index-for-bg;
+  }
+  &-logo {
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    z-index: $z-index-for-content;
+  }
+  &-content {
+    position: relative;
+    z-index: $z-index-for-content;
+  }
+  padding: 80px 60px;
+  position: relative;
+  background-image: url('../../../assets/cottage.jpg');
+}
