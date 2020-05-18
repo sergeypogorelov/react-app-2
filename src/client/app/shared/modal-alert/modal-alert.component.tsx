@@ -19,10 +19,8 @@ export const ModalAlert: FunctionComponent<ModalAlertProps> = (props) => {
           <div className="modal-header">
             <h5 className="modal-title">{title}</h5>
           </div>
-          <div className="modal-body d-flex justify-content-center">
-            {props.children}
-          </div>
-          <div className="modal-footer d-flex justify-content-center">
+          <div className="modal-body">{props.children}</div>
+          <div className="modal-footer justify-content-center">
             <button
               className="btn btn-primary"
               type="button"

@@ -8,7 +8,7 @@ import { App } from './app/app.component';
 
 render(
   <ErrorBoundary>
-    <App name="World" />
+    <App />
   </ErrorBoundary>,
   document.getElementById('root')
 );

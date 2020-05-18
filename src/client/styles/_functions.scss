@@ -1,9 +1,9 @@
 @import './variables';
 
 @function whiteColor($alpha: 1) {
-  @return rgba($color: $white-color, $alpha: $alpha);
+  @return rgba($color: $c-white, $alpha: $alpha);
 }
 
 @function blackColor($alpha: 1) {
-  @return rgba($color: $black-color, $alpha: $alpha);
+  @return rgba($color: $c-black, $alpha: $alpha);
 }

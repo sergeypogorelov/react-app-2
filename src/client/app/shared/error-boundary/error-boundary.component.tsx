@@ -23,7 +23,9 @@ export class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
     if (this.state.hasError) {
       return (
         <ModalAlert title="Error" onClose={this.handleOnModalClose}>
-          <p>Something went wrong. Click OK to reload the page.</p>
+          <p className="h5 text-center m-0">
+            Something went wrong. Click OK to reload the page.
+          </p>
         </ModalAlert>
       );
     }
