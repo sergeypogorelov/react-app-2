@@ -34,6 +34,19 @@ module.exports = webpackMerge(webpackConfigCommon, {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              outputPath: (url) => url.replace('src/client/', ''),
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
     ],
   },
   plugins: [
