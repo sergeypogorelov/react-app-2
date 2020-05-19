@@ -1,7 +1,7 @@
-@import '../../../../styles/variables';
+@import '../../../styles/variables';
 
-.movie-search-switch {
-  .switch-label {
+.switch-container {
+  &-label {
     margin-right: 20px;
   }
   opacity: 0.8;
