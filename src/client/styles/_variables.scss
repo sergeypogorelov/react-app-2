@@ -9,5 +9,9 @@ $c-secondary: #424242;
 $c-background: #232323;
 $c-background-alt: #555555;
 
-/// fonts
-$f-default: Montserrat;
+/// app fonts
+$f-regular: 'Montserrat Regular';
+$f-light: 'Montserrat Light';
+$f-medium: 'Montserrat Medium';
+
+$f-default: $f-regular;
