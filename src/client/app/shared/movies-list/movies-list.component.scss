@@ -1,0 +1,31 @@
+@import '../../../styles/variables';
+
+.movies-list {
+  padding: 120px 60px;
+  background-color: $c-background;
+}
+
+.movie-item {
+  &-poster {
+    margin-bottom: 20px;
+  }
+  &-top {
+    margin-bottom: 5px;
+  }
+  &-title {
+    font-size: 16px;
+  }
+  &-year {
+    padding: 2px 15px;
+    font-size: 14px;
+    border: 1px solid $c-background-alt;
+    border-radius: 4px;
+  }
+  &-description {
+    font-size: 14px;
+    opacity: 0.5;
+  }
+  font-family: $f-medium;
+  opacity: 0.7;
+  overflow: hidden;
+}

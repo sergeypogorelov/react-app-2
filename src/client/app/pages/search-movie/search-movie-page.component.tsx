@@ -9,6 +9,7 @@ import { MovieSearchSwitch } from './movie-search-switch/movie-search-switch.com
 import { InfoContainer } from '../../shared/info-container/info-container.component';
 import { InfoText } from '../../shared/info-container/info-text/info-text.component';
 import { SwitchContainer } from '../../shared/switch-container/switch-container.component';
+import { MoviesList } from '../../shared/movies-list/movies-list.component';
 
 export const SearchMoviePage: FunctionComponent<{}> = () => {
   return (
@@ -22,6 +23,7 @@ export const SearchMoviePage: FunctionComponent<{}> = () => {
         <InfoText>7 movies found</InfoText>
         <SwitchContainer>SORT BY</SwitchContainer>
       </InfoContainer>
+      <MoviesList />
     </div>
   );
 };
