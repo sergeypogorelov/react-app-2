@@ -1,3 +1,5 @@
+import './search-movie-page.component.scss';
+
 import React, { FunctionComponent } from 'react';
 
 import { Header } from '../../shared/header/header.component';
@@ -7,12 +9,12 @@ import { MovieSearchSwitch } from './movie-search-switch/movie-search-switch.com
 
 export const SearchMoviePage: FunctionComponent<{}> = () => {
   return (
-    <>
+    <div className="search-movie-page">
       <Header>
         <HeaderTitle>FIND YOUR MOVIE</HeaderTitle>
         <MovieSearch />
         <MovieSearchSwitch />
       </Header>
-    </>
+    </div>
   );
 };
