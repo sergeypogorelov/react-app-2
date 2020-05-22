@@ -6,11 +6,9 @@ import { ViewMoviePage } from './pages/view-movie/view-movie-page.component';
 
 export const App = () => {
   return (
-    <>
-      <Page>
-        {/* <SearchMoviePage /> */}
-        <ViewMoviePage />
-      </Page>
-    </>
+    <Page>
+      <SearchMoviePage />
+      {/* <ViewMoviePage /> */}
+    </Page>
   );
 };

@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react';
 
 const killBillModule = require('../../../../assets/images/kill-bill.png');
 
-export const MovieItem: FunctionComponent<{}> = (props) => {
+export const MovieItem: FunctionComponent<{}> = () => {
   return (
     <div className="movie-item">
       <img className="movie-item-poster" src={killBillModule.default} />

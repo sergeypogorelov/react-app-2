@@ -12,11 +12,13 @@ import { SwitchContainer } from '../../shared/switch-container/switch-container.
 import { MoviesList } from '../../shared/movies-list/movies-list.component';
 
 export const SearchMoviePage: FunctionComponent<{}> = () => {
+  const headerTitleId = 'searchLabel';
+
   return (
     <div className="search-movie-page">
       <Header>
-        <HeaderTitle>FIND YOUR MOVIE</HeaderTitle>
-        <MovieSearch />
+        <HeaderTitle id={headerTitleId}>FIND YOUR MOVIE</HeaderTitle>
+        <MovieSearch controlLabeledBy={[headerTitleId]} />
         <MovieSearchSwitch />
       </Header>
       <InfoContainer>

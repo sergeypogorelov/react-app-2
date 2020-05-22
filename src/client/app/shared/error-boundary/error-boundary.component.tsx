@@ -16,21 +16,19 @@ export class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
   }
 
   componentDidCatch(error: any, errorInfo: any) {
-    console.log(error, errorInfo);
+    console.error(error, errorInfo);
   }
 
   render() {
-    if (this.state.hasError) {
-      return (
-        <ModalAlert title="Error" onClose={this.handleOnModalClose}>
-          <p className="h5 text-center m-0">
-            Something went wrong. Click OK to reload the page.
-          </p>
-        </ModalAlert>
-      );
-    }
-
-    return this.props.children;
+    return this.state.hasError ? (
+      <ModalAlert title="Error" onClose={this.handleOnModalClose}>
+        <p className="h5 text-center m-0">
+          Something went wrong. Click OK to reload the page.
+        </p>
+      </ModalAlert>
+    ) : (
+      this.props.children
+    );
   }
 
   handleOnModalClose = () => {

@@ -2,7 +2,7 @@ import './switch.component.scss';
 
 import React, { FunctionComponent } from 'react';
 
-export const Switch: FunctionComponent<{}> = (props) => {
+export const Switch: FunctionComponent<{}> = () => {
   return (
     <div className="switch d-flex">
       <button className="switch-item switch-item-left active">Title</button>

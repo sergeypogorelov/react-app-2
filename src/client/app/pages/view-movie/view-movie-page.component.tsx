@@ -10,7 +10,7 @@ import { MoviesList } from '../../shared/movies-list/movies-list.component';
 
 const killBillModule = require('../../../assets/images/kill-bill.png');
 
-export const ViewMoviePage: FunctionComponent<{}> = (props) => {
+export const ViewMoviePage: FunctionComponent<{}> = () => {
   return (
     <div className="search-movie-page">
       <Header>

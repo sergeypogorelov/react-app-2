@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 
 import { Footer } from './footer/footer.component';
 
-export const Page: FunctionComponent<{}> = (props) => {
+export const Page: FunctionComponent<{}> = ({ children }) => {
   return (
     <div className="container">
-      {props.children}
+      {children}
       <Footer />
     </div>
   );
