@@ -1,4 +1,6 @@
 dist-dev
 dist-prod
 
+coverage
+
 node_modules
