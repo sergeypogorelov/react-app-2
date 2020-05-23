@@ -1,0 +1,16 @@
+@import '../../../../../styles/variables';
+
+.movie-additional-info {
+  &-item {
+    display: flex-end;
+  }
+  &-value {
+    margin-right: 5px;
+    font-size: 26px;
+    color: $c-primary;
+  }
+  &-unit {
+    font-size: 14px;
+    color: rgba($color: $c-default, $alpha: 0.5);
+  }
+}
