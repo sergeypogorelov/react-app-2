@@ -16,7 +16,7 @@
     "clean": "rimraf ./dist-dev && mkdir dist-dev",
     "clean:prod": "rimraf ./dist-prod && mkdir dist-prod",
     "test": "jest --watchAll",
-    "test:ci": "jest --coverage"
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
