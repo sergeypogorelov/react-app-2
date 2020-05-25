@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch component should render correctly 1`] = `
+<div
+  className="switch d-flex"
+>
+  <button
+    className="switch-item switch-item-left active"
+  >
+    Title
+  </button>
+  <button
+    className="switch-item switch-item-right"
+  >
+    Genre
+  </button>
+</div>
+`;

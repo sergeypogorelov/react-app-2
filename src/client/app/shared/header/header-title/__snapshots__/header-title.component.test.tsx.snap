@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderTitle component should render correctly 1`] = `
+<h2
+  className="header-title"
+  id="id"
+>
+  test
+</h2>
+`;

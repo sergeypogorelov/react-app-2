@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TitleMain component should render correctly 1`] = `
+<p
+  className="title-main m-0"
+>
+  <span
+    className="title-main-prefix"
+  >
+    netflix
+  </span>
+  <span>
+    roulette
+  </span>
+</p>
+`;

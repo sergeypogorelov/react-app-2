@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render correctly 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="header-logo"
+  >
+    <p
+      className="title-main m-0"
+    >
+      <span
+        className="title-main-prefix"
+      >
+        netflix
+      </span>
+      <span>
+        roulette
+      </span>
+    </p>
+  </div>
+  <div
+    className="header-content"
+  >
+    test
+  </div>
+</div>
+`;
