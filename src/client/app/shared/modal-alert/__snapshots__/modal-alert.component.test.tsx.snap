@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalAlert component should render correctly with title specified and children 1`] = `
+<div
+  className="modal d-block"
+  style={
+    Object {
+      "zIndex": 10000,
+    }
+  }
+>
+  <div
+    className="modal-dialog modal-dialog-centered"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+        >
+          test-title
+        </h5>
+      </div>
+      <div
+        className="modal-body"
+      >
+        test
+      </div>
+      <div
+        className="modal-footer justify-content-center"
+      >
+        <button
+          className="btn btn-primary"
+          onClick={[MockFunction]}
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ModalAlert component should render correctly with zIndex specified and children 1`] = `
+<div
+  className="modal d-block"
+  style={
+    Object {
+      "zIndex": 101,
+    }
+  }
+>
+  <div
+    className="modal-dialog modal-dialog-centered"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+        >
+          Alert
+        </h5>
+      </div>
+      <div
+        className="modal-body"
+      >
+        test
+      </div>
+      <div
+        className="modal-footer justify-content-center"
+      >
+        <button
+          className="btn btn-primary"
+          onClick={[MockFunction]}
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ModalAlert component should render correctly without props and children 1`] = `
+<div
+  className="modal d-block"
+  style={
+    Object {
+      "zIndex": 10000,
+    }
+  }
+>
+  <div
+    className="modal-dialog modal-dialog-centered"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+        >
+          Alert
+        </h5>
+      </div>
+      <div
+        className="modal-body"
+      />
+      <div
+        className="modal-footer justify-content-center"
+      >
+        <button
+          className="btn btn-primary"
+          onClick={[MockFunction]}
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ModalAlert component should render correctly without props and with children 1`] = `
+<div
+  className="modal d-block"
+  style={
+    Object {
+      "zIndex": 10000,
+    }
+  }
+>
+  <div
+    className="modal-dialog modal-dialog-centered"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+        >
+          Alert
+        </h5>
+      </div>
+      <div
+        className="modal-body"
+      >
+        test
+      </div>
+      <div
+        className="modal-footer justify-content-center"
+      >
+        <button
+          className="btn btn-primary"
+          onClick={[MockFunction]}
+          type="button"
+        >
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

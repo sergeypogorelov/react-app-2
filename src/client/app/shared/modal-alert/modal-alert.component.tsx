@@ -2,8 +2,9 @@ import React, { FunctionComponent } from 'react';
 
 import { ModalAlertProps } from './modal-alert-props.interface';
 
-const DEF_Z_INDEX = 10000;
-const DEF_TITLE = 'Alert';
+export const DEF_Z_INDEX = 10000;
+
+export const DEF_TITLE = 'Alert';
 
 export const ModalAlert: FunctionComponent<ModalAlertProps> = ({
   children,
