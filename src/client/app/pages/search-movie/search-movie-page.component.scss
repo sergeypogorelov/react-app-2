@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+
+.search-movie-page {
+  .header-title {
+    margin-bottom: 35px;
+  }
+  .header-content {
+    .movie-search {
+      margin-bottom: 15px;
+    }
+    margin-left: 60px;
+  }
+  .info-container {
+    .switch-container {
+      .switch-item {
+        &.active {
+          background-color: $c-primary;
+        }
+        background-color: #484848;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import './variables';
+
+@font-face {
+  font-family: $f-regular;
+  src: url('../assets/fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: $f-light;
+  src: url('../assets/fonts/Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: $f-medium;
+  src: url('../assets/fonts/Montserrat-Medium.ttf');
+}
+
+@font-face {
+  font-family: $f-extraBold;
+  src: url('../assets/fonts/Montserrat-ExtraBold.ttf');
+}

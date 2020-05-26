@@ -1,5 +1,14 @@
 import React from 'react';
 
-import { AppProps } from './app-props.interface';
+import { Page } from './layout/page.component';
+import { SearchMoviePage } from './pages/search-movie/search-movie-page.component';
+import { ViewMoviePage } from './pages/view-movie/view-movie-page.component';
 
-export const App = (props: AppProps) => <h1>Hello {props.name}!</h1>;
+export const App = () => {
+  return (
+    <Page>
+      {/* <SearchMoviePage /> */}
+      <ViewMoviePage />
+    </Page>
+  );
+};

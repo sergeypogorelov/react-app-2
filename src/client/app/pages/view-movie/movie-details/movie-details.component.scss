@@ -1,0 +1,39 @@
+@import '../../../../styles/variables';
+
+.movie-details {
+  &-info {
+    padding: 30px 120px 0 60px;
+  }
+  &-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    font-size: 26px;
+    color: rgba($color: #a1e66f, $alpha: 0.8);
+    border: 1px solid rgba($color: $c-default, $alpha: 0.8);
+    border-radius: 50%;
+  }
+  &-subtitle {
+    font-family: $f-medium;
+    font-size: 16px;
+    color: rgba($color: $c-default, $alpha: 0.7);
+  }
+  &-additional {
+    .movie-additional-info {
+      margin-right: 30px;
+    }
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 25px;
+  }
+  &-description {
+    font-size: 17px;
+    line-height: 22px;
+    color: rgba($color: $c-default, $alpha: 0.8);
+  }
+  .header-title {
+    margin-right: 20px;
+  }
+}

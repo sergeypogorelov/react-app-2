@@ -1,0 +1,9 @@
+@import '../../../styles/variables';
+
+.movies-list {
+  .movie-wrapper {
+    margin-bottom: 50px;
+  }
+  padding: 80px 60px 0 60px;
+  background-color: $c-background;
+}
