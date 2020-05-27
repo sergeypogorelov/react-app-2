@@ -16,7 +16,13 @@
     "clean": "rimraf ./dist-dev && mkdir dist-dev",
     "clean:prod": "rimraf ./dist-prod && mkdir dist-prod",
     "test": "jest --watchAll",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "pree2e": "run-s build:prod",
+    "e2e": "run-p start-server:prod cypress:run",
+    "pree2e:open": "run-s build:prod",
+    "e2e:open": "run-p start-server:prod cypress:open",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -54,6 +60,7 @@
     "autoprefixer": "^9.7.6",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
+    "cypress": "^4.7.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "file-loader": "^6.0.0",

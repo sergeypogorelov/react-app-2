@@ -1,0 +1,5 @@
+{
+  "baseUrl": "http://localhost:4200",
+  "port": 8080,
+  "watchForFileChanges": false
+}
