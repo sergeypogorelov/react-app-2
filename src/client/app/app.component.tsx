@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 
-import { initialState } from './redux/reducers/initial-state';
+import { initialState } from './redux/reducers';
 import { configureStore } from './redux/configure-store';
 
 import { Page } from './layout/page.component';

@@ -1,16 +1,33 @@
-import * as types from '../../actions/action-types';
-import { initialState } from '../initial-state';
+import { SEARCH_MOVIES_FULFILLED } from '../../actions/action-types';
+
+import {
+  SearchMoviesActionTypes,
+  SearchMoviesFulfilledAction,
+} from '../../actions/search-movies/search-movies';
+
+import { SearchBy } from '../../../core/enums/search-by.enum';
+import { SortBy } from '../../../core/enums/sort-by.enum';
+
+import { MoviesPageState } from '../../interfaces/movies-page/movies-page-state.interface';
+
+export const moviesPageState: MoviesPageState = {
+  searchBy: SearchBy.Title,
+  sortBy: SortBy.ReleaseData,
+  totalMovies: 0,
+  movies: [],
+};
 
 export const moviesReducer = (
-  state = initialState.moviesPage,
-  action: { type: string; payload?: any }
-): typeof initialState.moviesPage => {
+  state = moviesPageState,
+  action: SearchMoviesActionTypes
+): MoviesPageState => {
   switch (action.type) {
-    case types.SEARCH_MOVIES_FULFILLED:
+    case SEARCH_MOVIES_FULFILLED:
+      const newAction = action as SearchMoviesFulfilledAction;
       return {
         ...state,
-        movies: action.payload.data,
-        totalMovies: action.payload.total,
+        movies: newAction.payload.data,
+        totalMovies: newAction.payload.total,
       };
     default:
       return state;

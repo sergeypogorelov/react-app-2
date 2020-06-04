@@ -1,6 +1,12 @@
 import './search-movie-page.component.scss';
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+
+import { AppState } from '../../redux/reducers';
+import { SearchMoviePageProps } from './search-movie-page-props.interface';
+
+import { searchMovies } from '../../redux/actions/search-movies/search-movies';
 
 import { Header } from '../../shared/header/header.component';
 import { HeaderTitle } from '../../shared/header/header-title/header-title.component';
@@ -11,8 +17,17 @@ import { InfoText } from '../../shared/info-container/info-text/info-text.compon
 import { SwitchContainer } from '../../shared/switch-container/switch-container.component';
 import { MoviesList } from '../../shared/movies-list/movies-list.component';
 
-export const SearchMoviePage: FunctionComponent<{}> = () => {
+const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
+  movies,
+  totalMovies,
+}) => {
   const headerTitleId = 'searchLabel';
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(searchMovies('Kill Bill'));
+  }, []);
 
   return (
     <div className="search-movie-page">
@@ -22,10 +37,18 @@ export const SearchMoviePage: FunctionComponent<{}> = () => {
         <MovieSearchSwitch />
       </Header>
       <InfoContainer>
-        <InfoText>7 movies found</InfoText>
+        <InfoText>{totalMovies} movies found</InfoText>
         <SwitchContainer>SORT BY</SwitchContainer>
       </InfoContainer>
-      <MoviesList />
+      <MoviesList movies={movies} />
     </div>
   );
 };
+
+const mapStateToProps = (state: AppState): SearchMoviePageProps => {
+  return {
+    ...state.moviesPage,
+  };
+};
+
+export const SearchMoviePage = connect(mapStateToProps)(SearchMoviePageFunc);

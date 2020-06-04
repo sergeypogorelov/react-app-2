@@ -1,22 +1,12 @@
 import './movies-list.component.scss';
 
 import React, { FunctionComponent, useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
 
 import { MoviesListProps } from './movies-list-props.interface';
-import { AppState } from '../../redux/interfaces/app-state.interface';
-
-import { searchMovies } from '../../redux/actions/search-movies/search-movies';
 
 import { MovieItem } from './movie-item/movie-item.component';
 
-const MoviesListFunc: FunctionComponent<MoviesListProps> = (props) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(searchMovies('Kill Bill'));
-  }, []);
-
+export const MoviesList: FunctionComponent<MoviesListProps> = (props) => {
   return (
     <div className="movies-list">
       {props.movies.length > 0 ? (
@@ -33,11 +23,3 @@ const MoviesListFunc: FunctionComponent<MoviesListProps> = (props) => {
     </div>
   );
 };
-
-const mapStateToProps = (state: AppState): MoviesListProps => {
-  return {
-    movies: state.moviesPage.movies,
-  };
-};
-
-export const MoviesList = connect(mapStateToProps)(MoviesListFunc);

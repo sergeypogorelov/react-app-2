@@ -18,7 +18,7 @@ export const ViewMoviePage: FunctionComponent<{}> = () => {
       <InfoContainer>
         <InfoText>Movies by Drama genre</InfoText>
       </InfoContainer>
-      <MoviesList />
+      <MoviesList movies={[]} />
     </div>
   );
 };
