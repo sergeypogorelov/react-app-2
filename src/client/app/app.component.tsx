@@ -7,8 +7,8 @@ import { ViewMoviePage } from './pages/view-movie/view-movie-page.component';
 export const App = () => {
   return (
     <Page>
-      {/* <SearchMoviePage /> */}
-      <ViewMoviePage />
+      <SearchMoviePage />
+      {/* <ViewMoviePage /> */}
     </Page>
   );
 };

@@ -1,9 +1,17 @@
 @import '../../../styles/variables';
+@import '../../../styles/functions';
 
 .movies-list {
+  &-empty {
+    margin-top: 150px;
+    font-size: 52px;
+    color: whiteColor(0.8);
+    text-align: center;
+  }
   .movie-wrapper {
     margin-bottom: 50px;
   }
+  min-height: 550px;
   padding: 80px 60px 0 60px;
   background-color: $c-background;
 }
