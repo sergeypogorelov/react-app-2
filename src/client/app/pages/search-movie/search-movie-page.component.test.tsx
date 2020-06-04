@@ -15,7 +15,8 @@ import { SearchMoviePage } from './search-movie-page.component';
 const renderComponent = (): ShallowWrapper => {
   return shallow(<SearchMoviePage />);
 };
-fdescribe('Search movie page component', () => {
+
+describe('Search movie page component', () => {
   it('should render header component and its children', () => {
     const wrapper = renderComponent();
     const headerWrapper = wrapper.find(Header);

@@ -1,18 +1,28 @@
 import './movies-list.component.scss';
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+
+import { MoviesListProps } from './movies-list-props.interface';
+import { AppState } from '../../redux/interfaces/app-state.interface';
+
+import { searchMovies } from '../../redux/actions/search-movies/search-movies';
 
 import { MovieItem } from './movie-item/movie-item.component';
 
-export const MoviesList: FunctionComponent<{}> = () => {
-  const items: number[] = [];
+const MoviesListFunc: FunctionComponent<MoviesListProps> = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(searchMovies('Kill Bill'));
+  }, []);
 
   return (
     <div className="movies-list">
-      {items.length > 0 ? (
+      {props.movies.length > 0 ? (
         <div className="row">
-          {items.map((i) => (
-            <div className="col-4 movie-wrapper" key={i}>
+          {props.movies.map((i) => (
+            <div className="col-4 movie-wrapper" key={i.id}>
               <MovieItem />
             </div>
           ))}
@@ -23,3 +33,11 @@ export const MoviesList: FunctionComponent<{}> = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state: AppState): MoviesListProps => {
+  return {
+    movies: state.moviesPage.movies,
+  };
+};
+
+export const MoviesList = connect(mapStateToProps)(MoviesListFunc);

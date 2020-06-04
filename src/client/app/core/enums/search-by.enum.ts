@@ -1,4 +1,4 @@
 export enum SearchBy {
-  title = 'title',
-  genres = 'genres',
+  Title = 'title',
+  Genres = 'genres',
 }
