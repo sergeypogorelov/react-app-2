@@ -2,7 +2,7 @@ import './movie-details.component.scss';
 
 import React, { FunctionComponent } from 'react';
 
-import { imageKillBill } from '../../../constants/assets-urls';
+import { imageKillBill } from '../../../core/constants/assets-urls';
 
 import { MovieAdditionalInfoProps } from './movie-additional-info/movie-additional-info-props.interface';
 

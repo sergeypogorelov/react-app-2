@@ -2,7 +2,7 @@ import './movie-item.component.scss';
 
 import React, { FunctionComponent } from 'react';
 
-import { imageKillBill } from '../../../constants/assets-urls';
+import { imageKillBill } from '../../../core/constants/assets-urls';
 
 export const MovieItem: FunctionComponent<{}> = () => {
   return (
