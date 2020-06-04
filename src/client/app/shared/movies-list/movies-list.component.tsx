@@ -13,7 +13,7 @@ export const MoviesList: FunctionComponent<MoviesListProps> = (props) => {
         <div className="row">
           {props.movies.map((i) => (
             <div className="col-4 movie-wrapper" key={i.id}>
-              <MovieItem />
+              <MovieItem item={i} />
             </div>
           ))}
         </div>

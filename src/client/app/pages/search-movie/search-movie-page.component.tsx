@@ -1,6 +1,6 @@
 import './search-movie-page.component.scss';
 
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { connect, useDispatch } from 'react-redux';
 
 import { AppState } from '../../redux/reducers';
@@ -25,15 +25,21 @@ const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(searchMovies('Kill Bill'));
-  }, []);
+  const handleSearchFormSubmit = useCallback(
+    (searchValue: string) => {
+      dispatch(searchMovies(searchValue));
+    },
+    [dispatch]
+  );
 
   return (
     <div className="search-movie-page">
       <Header>
         <HeaderTitle id={headerTitleId}>FIND YOUR MOVIE</HeaderTitle>
-        <MovieSearch controlLabeledBy={[headerTitleId]} />
+        <MovieSearch
+          controlLabeledBy={[headerTitleId]}
+          onSearchFormSubmit={handleSearchFormSubmit}
+        />
         <MovieSearchSwitch />
       </Header>
       <InfoContainer>
