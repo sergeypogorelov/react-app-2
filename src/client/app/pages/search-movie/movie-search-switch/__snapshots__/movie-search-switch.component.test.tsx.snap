@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieSearchSwitch component should render correctly 1`] = `
+<div
+  className="switch-container d-flex align-items-center"
+>
+  <label
+    className="switch-container-label my-0"
+  >
+    SEARCH BY
+  </label>
+  <div
+    className="switch d-flex"
+  >
+    <button
+      className="switch-item switch-item-left active"
+    >
+      Title
+    </button>
+    <button
+      className="switch-item switch-item-right"
+    >
+      Genre
+    </button>
+  </div>
+</div>
+`;

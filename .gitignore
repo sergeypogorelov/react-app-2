@@ -1,4 +1,8 @@
 dist-dev
 dist-prod
 
+cypress/videos
+
+coverage
+
 node_modules

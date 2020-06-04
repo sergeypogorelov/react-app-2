@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieSearch component should render correctly if labelled 1`] = `
+<form
+  className="movie-search"
+>
+  <input
+    aria-labelledby="controlId"
+    className="movie-search-control"
+  />
+  <button
+    className="movie-search-button"
+  >
+    Search
+  </button>
+</form>
+`;
+
+exports[`MovieSearch component should render correctly if unlabelled 1`] = `
+<form
+  className="movie-search"
+>
+  <input
+    aria-labelledby={null}
+    className="movie-search-control"
+  />
+  <button
+    className="movie-search-button"
+  >
+    Search
+  </button>
+</form>
+`;

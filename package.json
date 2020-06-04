@@ -15,7 +15,14 @@
     "build:prod": "webpack --config webpack/webpack.config.prod.js",
     "clean": "rimraf ./dist-dev && mkdir dist-dev",
     "clean:prod": "rimraf ./dist-prod && mkdir dist-prod",
-    "test": "jest"
+    "test": "jest --watchAll",
+    "test:coverage": "jest --coverage",
+    "pree2e": "run-s build:prod",
+    "e2e": "run-p start-server:prod cypress:run",
+    "pree2e:open": "run-s build:prod",
+    "e2e:open": "run-p start-server:prod cypress:open",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -45,12 +52,17 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
+    "@types/enzyme": "^3.10.5",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
+    "@types/react-test-renderer": "^16.9.2",
     "autoprefixer": "^9.7.6",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
+    "cypress": "^4.7.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.0.1",
@@ -60,6 +72,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "precss": "^4.0.0",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
@@ -72,7 +85,17 @@
     "webpack-merge": "^4.2.2"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "setupFiles": [
+      "./jest/setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/mock-file.js",
+      "\\.(css|scss|less)$": "<rootDir>/jest/mock-style.js"
+    },
+    "collectCoverageFrom": [
+      "src/client/**/*.{ts,tsx}"
+    ]
   },
   "prettier": {
     "trailingComma": "es5",

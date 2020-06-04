@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import './styles/index.scss';
 
 import React from 'react';

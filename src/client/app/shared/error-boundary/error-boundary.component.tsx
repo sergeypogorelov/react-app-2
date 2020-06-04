@@ -31,7 +31,11 @@ export class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
     );
   }
 
-  handleOnModalClose = () => {
+  reload = () => {
     window.location.reload();
+  };
+
+  handleOnModalClose = () => {
+    this.reload();
   };
 }

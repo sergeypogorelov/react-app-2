@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieAdditionalInfo component should render correctly 1`] = `
+<div
+  className="movie-additional-info"
+>
+  <span
+    className="movie-additional-info-value"
+  >
+    value
+  </span>
+  <span
+    className="movie-additional-info-unit"
+  >
+    unit
+  </span>
+</div>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoContainer component should render correctly 1`] = `
+<div
+  className="info-container d-flex align-items-center justify-content-between"
+>
+  test
+</div>
+`;
