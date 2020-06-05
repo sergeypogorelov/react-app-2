@@ -11,7 +11,7 @@ export const MovieItem: FunctionComponent<MovieItemProps> = ({ item }) => {
 
   return (
     <div className="movie-item">
-      <img className="movie-item-poster" src={imageKillBill} />
+      <img className="movie-item-poster" src={poster_path} />
       <div className="movie-item-top">
         <h3 className="movie-item-title mb-0">{title}</h3>
         <label className="movie-item-year mb-0">

@@ -1,24 +1,57 @@
 import './view-movie-page.component.scss';
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+
+import { AppState } from '../../redux/reducers';
+import { ViewMoviePageProps } from './view-movie-page-props.interface';
+
+import {
+  loadMovie,
+  loadMovieByGenre,
+} from '../../redux/actions/view-movie/view-movie';
 
 import { Header } from '../../shared/header/header.component';
 import { InfoContainer } from '../../shared/info-container/info-container.component';
 import { InfoText } from '../../shared/info-container/info-text/info-text.component';
 import { MoviesList } from '../../shared/movies-list/movies-list.component';
-
 import { MovieDetails } from './movie-details/movie-details.component';
 
-export const ViewMoviePage: FunctionComponent<{}> = () => {
+const ViewMoviePageFunc: FunctionComponent<ViewMoviePageProps> = ({
+  movie,
+  movies,
+}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadMovie(284054));
+  }, []);
+
+  useEffect(() => {
+    if (movie) {
+      dispatch(loadMovieByGenre(movie.genres[0]));
+    }
+  }, [movie]);
+
   return (
     <div className="search-movie-page">
       <Header>
-        <MovieDetails />
+        <MovieDetails movie={movie} />
       </Header>
       <InfoContainer>
-        <InfoText>Movies by Drama genre</InfoText>
+        {movie && movie.genres[0] && (
+          <InfoText>Movies by {movie.genres[0]} genre</InfoText>
+        )}
       </InfoContainer>
-      <MoviesList movies={[]} />
+      <MoviesList movies={movies} />
     </div>
   );
 };
+
+const mapStateToProps = (state: AppState): ViewMoviePageProps => {
+  return {
+    ...state.moviePage,
+  };
+};
+
+export const ViewMoviePage = connect(mapStateToProps)(ViewMoviePageFunc);

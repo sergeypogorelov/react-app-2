@@ -14,8 +14,8 @@ export const App = () => {
   return (
     <ReduxProvider store={store}>
       <Page>
-        <SearchMoviePage />
-        {/* <ViewMoviePage /> */}
+        {/* <SearchMoviePage /> */}
+        <ViewMoviePage />
       </Page>
     </ReduxProvider>
   );

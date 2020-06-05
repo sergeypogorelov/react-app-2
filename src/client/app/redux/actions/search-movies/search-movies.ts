@@ -8,6 +8,8 @@ import {
   CHANGE_SORT_BY,
 } from '../action-types';
 
+import { GLOBALS } from '../../../core/constants/globals';
+
 import { SearchBy } from '../../../core/enums/search-by.enum';
 import { SortBy } from '../../../core/enums/sort-by.enum';
 import { SortOrder } from '../../../core/enums/sort-order.enum';
@@ -38,7 +40,7 @@ export const searchMovies = (
     search,
     searchBy,
     sortBy,
-    limit: 6,
+    limit: GLOBALS.moviesPerPage,
     sortOrder: SortOrder.Desc,
   };
 

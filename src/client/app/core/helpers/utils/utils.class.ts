@@ -12,7 +12,7 @@ export class Utils {
     }
 
     return template.replace(
-      /\{([a-z]+)\}/gs,
+      /\{([a-zA-Z]+)\}/,
       (fullMatch, match) => params[match]
     );
   }
