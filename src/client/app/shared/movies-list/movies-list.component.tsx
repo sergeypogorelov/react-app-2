@@ -1,6 +1,6 @@
 import './movies-list.component.scss';
 
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import { MoviesListProps } from './movies-list-props.interface';
 

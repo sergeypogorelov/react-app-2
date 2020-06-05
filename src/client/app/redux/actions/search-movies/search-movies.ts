@@ -3,10 +3,14 @@ import {
   SEARCH_MOVIES_PENDING,
   SEARCH_MOVIES_FULFILLED,
   SEARCH_MOVIES_REJECTED,
+  CHANGE_SEARCH,
+  CHANGE_SEARCH_BY,
+  CHANGE_SORT_BY,
 } from '../action-types';
 
 import { SearchBy } from '../../../core/enums/search-by.enum';
 import { SortBy } from '../../../core/enums/sort-by.enum';
+import { SortOrder } from '../../../core/enums/sort-order.enum';
 
 import { DataRequestQueryParams } from '../../../core/interfaces/common/data-request-query-params.interface';
 import { MoviesResponse } from '../../../core/interfaces/movie/movies-response.interface';
@@ -35,11 +39,33 @@ export const searchMovies = (
     searchBy,
     sortBy,
     limit: 6,
+    sortOrder: SortOrder.Desc,
   };
 
   return {
     type: SEARCH_MOVIES,
     payload: moviesApiInstance.getAll(params),
+  };
+};
+
+export const changeSearch = (newSearch: string): ChangeSearchAction => {
+  return {
+    type: CHANGE_SEARCH,
+    payload: newSearch,
+  };
+};
+
+export const changeSearchBy = (newSearchBy: SearchBy): ChangeSearchByAction => {
+  return {
+    type: CHANGE_SEARCH_BY,
+    payload: newSearchBy,
+  };
+};
+
+export const changeSortBy = (newSortBy: SortBy): ChangeSortByAction => {
+  return {
+    type: CHANGE_SORT_BY,
+    payload: newSortBy,
   };
 };
 
@@ -61,8 +87,26 @@ export interface SearchMoviesRejectedAction {
   type: typeof SEARCH_MOVIES_REJECTED;
 }
 
+export interface ChangeSearchAction {
+  type: typeof CHANGE_SEARCH;
+  payload: string;
+}
+
+export interface ChangeSearchByAction {
+  type: typeof CHANGE_SEARCH_BY;
+  payload: SearchBy;
+}
+
+export interface ChangeSortByAction {
+  type: typeof CHANGE_SORT_BY;
+  payload: SortBy;
+}
+
 export type SearchMoviesActionTypes =
   | SearchMoviesAction
   | SearchMoviesPendingAction
   | SearchMoviesFulfilledAction
-  | SearchMoviesRejectedAction;
+  | SearchMoviesRejectedAction
+  | ChangeSearchAction
+  | ChangeSearchByAction
+  | ChangeSortByAction;

@@ -1,12 +1,15 @@
 import './search-movie-page.component.scss';
 
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 
 import { AppState } from '../../redux/reducers';
 import { SearchMoviePageProps } from './search-movie-page-props.interface';
 
-import { searchMovies } from '../../redux/actions/search-movies/search-movies';
+import {
+  searchMovies,
+  changeSearch,
+} from '../../redux/actions/search-movies/search-movies';
 
 import { Header } from '../../shared/header/header.component';
 import { HeaderTitle } from '../../shared/header/header-title/header-title.component';
@@ -14,10 +17,13 @@ import { MovieSearch } from './movie-search/movie-search.component';
 import { MovieSearchSwitch } from './movie-search-switch/movie-search-switch.component';
 import { InfoContainer } from '../../shared/info-container/info-container.component';
 import { InfoText } from '../../shared/info-container/info-text/info-text.component';
-import { SwitchContainer } from '../../shared/switch-container/switch-container.component';
 import { MoviesList } from '../../shared/movies-list/movies-list.component';
+import { SearchMovieSort } from './search-movie-sort/search-movie-sort.component';
 
 const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
+  search,
+  searchBy,
+  sortBy,
   movies,
   totalMovies,
 }) => {
@@ -27,10 +33,16 @@ const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
 
   const handleSearchFormSubmit = useCallback(
     (searchValue: string) => {
-      dispatch(searchMovies(searchValue));
+      dispatch(changeSearch(searchValue));
     },
     [dispatch]
   );
+
+  useEffect(() => {
+    if (search) {
+      dispatch(searchMovies(search, searchBy, sortBy));
+    }
+  }, [dispatch, search, searchBy, sortBy]);
 
   return (
     <div className="search-movie-page">
@@ -44,7 +56,7 @@ const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
       </Header>
       <InfoContainer>
         <InfoText>{totalMovies} movies found</InfoText>
-        <SwitchContainer>SORT BY</SwitchContainer>
+        <SearchMovieSort />
       </InfoContainer>
       <MoviesList movies={movies} />
     </div>

@@ -1,4 +1,4 @@
-import axios, { AxiosStatic } from 'axios';
+import axios from 'axios';
 
 import { endpoints } from '../../constants/endpoints';
 
@@ -8,11 +8,9 @@ import { Movie } from '../../interfaces/movie/movie.interface';
 
 import { Utils } from '../../helpers/utils/utils.class';
 
-export class MoviesApi {
-  constructor(private _axios: AxiosStatic) {}
-
+class MoviesApi {
   async getAll(queryParams?: DataRequestQueryParams): Promise<MoviesResponse> {
-    const response = await this._axios.get(endpoints.herokuMovies, {
+    const response = await axios.get(endpoints.herokuMovies, {
       params: queryParams,
     });
 
@@ -28,10 +26,10 @@ export class MoviesApi {
       movieId: String(movieId),
     });
 
-    const response = await this._axios.get(url);
+    const response = await axios.get(url);
 
     return response.data;
   }
 }
 
-export const moviesApiInstance = new MoviesApi(axios);
+export const moviesApiInstance = new MoviesApi();
