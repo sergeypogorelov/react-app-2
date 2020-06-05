@@ -2,12 +2,11 @@ import './movie-details.component.scss';
 
 import React, { FunctionComponent } from 'react';
 
-import { imageKillBill } from '../../../core/constants/assets-urls';
-
 import { MovieAdditionalInfoProps } from './movie-additional-info/movie-additional-info-props.interface';
 import { MovieDetailsProps } from './movie-details-props.interface';
 
 import { HeaderTitle } from '../../../shared/header/header-title/header-title.component';
+import { Image } from '../../../shared/image/image.component';
 import { MovieAdditionalInfo } from './movie-additional-info/movie-additional-info.component';
 
 export const MovieDetails: FunctionComponent<MovieDetailsProps> = ({
@@ -40,7 +39,7 @@ export const MovieDetails: FunctionComponent<MovieDetailsProps> = ({
 
   return (
     <div className="movie-details d-flex">
-      <img className="movie-details-poster" src={poster_path} />
+      <Image className="movie-details-poster" src={poster_path} />
       <div className="movie-details-info">
         <div className="movie-details-title d-flex align-items-center">
           <HeaderTitle>{title}</HeaderTitle>

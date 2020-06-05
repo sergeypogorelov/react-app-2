@@ -1,3 +1,3 @@
-const killBillModule = require('../../../assets/images/kill-bill.png');
+const imgNotFoundModule = require('../../../assets/images/img-not-found.png');
 
-export const imageKillBill = killBillModule.default;
+export const imageNotFound = imgNotFoundModule.default;
