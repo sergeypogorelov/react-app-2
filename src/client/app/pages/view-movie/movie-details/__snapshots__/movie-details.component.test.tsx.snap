@@ -6,6 +6,8 @@ exports[`MovieDetails component should render correctly 1`] = `
 >
   <img
     className="movie-details-poster"
+    onError={[Function]}
+    src="poster path"
   />
   <div
     className="movie-details-info"
@@ -16,18 +18,18 @@ exports[`MovieDetails component should render correctly 1`] = `
       <h2
         className="header-title"
       >
-        Kill Bill: Vol 2
+        title
       </h2>
       <div
         className="movie-details-rating"
       >
-        4.3
+        10
       </div>
     </div>
     <div
       className="movie-details-subtitle"
     >
-      Oscar winning Movie
+      tagline
     </div>
     <div
       className="movie-details-additional"
@@ -38,7 +40,7 @@ exports[`MovieDetails component should render correctly 1`] = `
         <span
           className="movie-additional-info-value"
         >
-          1994
+          1993
         </span>
         <span
           className="movie-additional-info-unit"
@@ -52,7 +54,7 @@ exports[`MovieDetails component should render correctly 1`] = `
         <span
           className="movie-additional-info-value"
         >
-          154
+          150
         </span>
         <span
           className="movie-additional-info-unit"
@@ -64,7 +66,7 @@ exports[`MovieDetails component should render correctly 1`] = `
     <div
       className="movie-details-description"
     >
-      Pulp Fiction is a 1994 American crime film written and directed by Quentin Tarantino; it is based on a story by Tarantino and Roger Avary.[4] Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles. The film's title refers to the pulp magazines and hardboiled crime novels popular during the mid-20th century, known for their graphic violence and punchy dialogue.
+      overview
     </div>
   </div>
 </div>

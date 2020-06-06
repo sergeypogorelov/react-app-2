@@ -6,13 +6,17 @@ exports[`Switch component should render correctly 1`] = `
 >
   <button
     className="switch-item switch-item-left active"
+    onClick={[Function]}
+    type="button"
   >
-    Title
+    left label
   </button>
   <button
     className="switch-item switch-item-right"
+    onClick={[Function]}
+    type="button"
   >
-    Genre
+    right label
   </button>
 </div>
 `;

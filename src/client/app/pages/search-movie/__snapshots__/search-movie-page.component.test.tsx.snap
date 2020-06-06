@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchMoviePage component should render correctly 1`] = `
+<div
+  className="search-movie-page"
+>
+  <div
+    className="header"
+  >
+    <div
+      className="header-logo"
+    >
+      <p
+        className="title-main m-0"
+      >
+        <span
+          className="title-main-prefix"
+        >
+          netflix
+        </span>
+        <span>
+          roulette
+        </span>
+      </p>
+    </div>
+    <div
+      className="header-content"
+    >
+      <h2
+        className="header-title"
+        id="searchLabel"
+      >
+        FIND YOUR MOVIE
+      </h2>
+      <form
+        className="movie-search"
+        onSubmit={[Function]}
+      >
+        <input
+          aria-labelledby="searchLabel"
+          className="movie-search-control"
+          onChange={[Function]}
+          value=""
+        />
+        <button
+          className="movie-search-button"
+        >
+          Search
+        </button>
+      </form>
+      <div
+        className="switch-container d-flex align-items-center"
+      >
+        <label
+          className="switch-container-label my-0"
+        >
+          SEARCH BY
+        </label>
+        <div
+          className="switch d-flex"
+        >
+          <button
+            className="switch-item switch-item-left active"
+            onClick={[Function]}
+            type="button"
+          >
+            Title
+          </button>
+          <button
+            className="switch-item switch-item-right"
+            onClick={[Function]}
+            type="button"
+          >
+            Genre
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="info-container d-flex align-items-center justify-content-between"
+  >
+    <p
+      className="info-text"
+    >
+      0
+       movies found
+    </p>
+    <div
+      className="switch-container d-flex align-items-center"
+    >
+      <label
+        className="switch-container-label my-0"
+      >
+        SORT BY
+      </label>
+      <div
+        className="switch d-flex"
+      >
+        <button
+          className="switch-item switch-item-left active"
+          onClick={[Function]}
+          type="button"
+        >
+          Release Date
+        </button>
+        <button
+          className="switch-item switch-item-right"
+          onClick={[Function]}
+          type="button"
+        >
+          Rating
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    className="movies-list"
+  >
+    <h3
+      className="movies-list-empty"
+    >
+      No movies found
+    </h3>
+  </div>
+</div>
+`;
