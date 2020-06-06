@@ -8,8 +8,10 @@ import { Movie } from '../../interfaces/movie/movie.interface';
 
 import { Utils } from '../../helpers/utils/utils.class';
 
-class MoviesApi {
-  async getAll(queryParams?: DataRequestQueryParams): Promise<MoviesResponse> {
+export class MoviesApi {
+  static async getAll(
+    queryParams?: DataRequestQueryParams
+  ): Promise<MoviesResponse> {
     const response = await axios.get(endpoints.herokuMovies, {
       params: queryParams,
     });
@@ -17,7 +19,7 @@ class MoviesApi {
     return response.data;
   }
 
-  async getById(movieId: number): Promise<Movie> {
+  static async getById(movieId: number): Promise<Movie> {
     if (typeof movieId === 'undefined') {
       throw new Error('Movie id is not specified.');
     }
@@ -31,5 +33,3 @@ class MoviesApi {
     return response.data;
   }
 }
-
-export const moviesApi = new MoviesApi();

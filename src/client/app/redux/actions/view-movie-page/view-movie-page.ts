@@ -15,19 +15,19 @@ import { SearchBy } from '../../../core/enums/search-by.enum';
 import { Movie } from '../../../core/interfaces/movie/movie.interface';
 import { MoviesResponse } from '../../../core/interfaces/movie/movies-response.interface';
 
-import { moviesApi } from '../../../core/api/movies/movies-api.class';
+import { MoviesApi } from '../../../core/api/movies/movies-api.class';
 
 export const loadMovie = (id: number): LoadMovieAction => {
   return {
     type: LOAD_MOVIE,
-    payload: moviesApi.getById(id),
+    payload: MoviesApi.getById(id),
   };
 };
 
 export const loadMovieByGenre = (genre: string): LoadMoviesByGenreAction => {
   return {
     type: LOAD_MOVIES_BY_GENRE,
-    payload: moviesApi.getAll({
+    payload: MoviesApi.getAll({
       search: genre,
       searchBy: SearchBy.Genres,
       limit: GLOBALS.moviesPerPage,
