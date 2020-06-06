@@ -9,7 +9,7 @@ import { ViewMoviePageProps } from './view-movie-page-props.interface';
 import {
   loadMovie,
   loadMovieByGenre,
-} from '../../redux/actions/view-movie/view-movie';
+} from '../../redux/actions/view-movie-page/view-movie-page';
 
 import { Header } from '../../shared/header/header.component';
 import { InfoContainer } from '../../shared/info-container/info-container.component';
@@ -19,7 +19,7 @@ import { MovieDetails } from './movie-details/movie-details.component';
 
 const ViewMoviePageFunc: FunctionComponent<ViewMoviePageProps> = ({
   movie,
-  movies,
+  moviesByGenre,
 }) => {
   const dispatch = useDispatch();
 
@@ -43,14 +43,14 @@ const ViewMoviePageFunc: FunctionComponent<ViewMoviePageProps> = ({
           <InfoText>Movies by {movie.genres[0]} genre</InfoText>
         )}
       </InfoContainer>
-      <MoviesList movies={movies} />
+      <MoviesList movies={moviesByGenre} />
     </div>
   );
 };
 
 const mapStateToProps = (state: AppState): ViewMoviePageProps => {
   return {
-    ...state.moviePage,
+    ...state.viewMoviePage,
   };
 };
 

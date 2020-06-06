@@ -17,7 +17,7 @@ import { SortOrder } from '../../../core/enums/sort-order.enum';
 import { DataRequestQueryParams } from '../../../core/interfaces/common/data-request-query-params.interface';
 import { MoviesResponse } from '../../../core/interfaces/movie/movies-response.interface';
 
-import { moviesApiInstance } from '../../../core/api/movies/movies-api.class';
+import { moviesApi } from '../../../core/api/movies/movies-api.class';
 
 export const searchMovies = (
   search: string,
@@ -46,7 +46,7 @@ export const searchMovies = (
 
   return {
     type: SEARCH_MOVIES,
-    payload: moviesApiInstance.getAll(params),
+    payload: moviesApi.getAll(params),
   };
 };
 
@@ -104,7 +104,7 @@ export interface ChangeSortByAction {
   payload: SortBy;
 }
 
-export type SearchMoviesActionTypes =
+export type SearchMoviePageActionTypes =
   | SearchMoviesAction
   | SearchMoviesPendingAction
   | SearchMoviesFulfilledAction

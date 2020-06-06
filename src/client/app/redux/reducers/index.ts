@@ -1,19 +1,23 @@
 import { combineReducers } from 'redux';
 
 import {
-  moviesReducer,
-  moviesPageState,
-} from './movies-reducer/movies-reducer';
-import { movieReducer, moviePageState } from './movie-reducer/movie-reducer';
+  searchMoviePageReducer,
+  searchMoviePageState,
+} from './search-movie-page-reducer/search-movie-page-reducer';
+
+import {
+  viewMoviePageReducer,
+  viewMoviePageState,
+} from './view-movie-page-reducer/view-movie-page-reducer';
 
 export const rootReducer = combineReducers({
-  moviesPage: moviesReducer,
-  moviePage: movieReducer,
+  searchMoviePage: searchMoviePageReducer,
+  viewMoviePage: viewMoviePageReducer,
 });
 
 export const initialState: AppState = {
-  moviesPage: moviesPageState,
-  moviePage: moviePageState,
+  searchMoviePage: searchMoviePageState,
+  viewMoviePage: viewMoviePageState,
 };
 
 export type AppState = ReturnType<typeof rootReducer>;

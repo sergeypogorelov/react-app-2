@@ -1,6 +1,6 @@
 import { Movie } from '../../../core/interfaces/movie/movie.interface';
 
-export interface MoviePageState {
+export interface ViewMoviePageState {
   movie: Movie;
-  movies: Movie[];
+  moviesByGenre: Movie[];
 }

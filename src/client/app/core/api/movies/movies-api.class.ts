@@ -32,4 +32,4 @@ class MoviesApi {
   }
 }
 
-export const moviesApiInstance = new MoviesApi();
+export const moviesApi = new MoviesApi();

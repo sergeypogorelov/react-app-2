@@ -1,3 +1,3 @@
-import { MoviePageState } from '../../redux/interfaces/movie-page/movie-page-state.interface';
+import { ViewMoviePageState } from '../../redux/interfaces/view-movie-page-state/view-movie-page-state.interface';
 
-export interface ViewMoviePageProps extends MoviePageState {}
+export interface ViewMoviePageProps extends ViewMoviePageState {}

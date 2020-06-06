@@ -5,20 +5,20 @@ import {
   CHANGE_SORT_BY,
 } from '../../actions/action-types';
 
+import { SearchBy } from '../../../core/enums/search-by.enum';
+import { SortBy } from '../../../core/enums/sort-by.enum';
+
+import { SearchMoviePageState } from '../../interfaces/search-movie-page-state/search-movie-page-state.interface';
+
 import {
-  SearchMoviesActionTypes,
+  SearchMoviePageActionTypes,
   SearchMoviesFulfilledAction,
   ChangeSearchAction,
   ChangeSearchByAction,
   ChangeSortByAction,
-} from '../../actions/search-movies/search-movies';
+} from '../../actions/search-movie-page/search-movie-page';
 
-import { SearchBy } from '../../../core/enums/search-by.enum';
-import { SortBy } from '../../../core/enums/sort-by.enum';
-
-import { MoviesPageState } from '../../interfaces/movies-page/movies-page-state.interface';
-
-export const moviesPageState: MoviesPageState = {
+export const searchMoviePageState: SearchMoviePageState = {
   search: '',
   searchBy: SearchBy.Title,
   sortBy: SortBy.ReleaseData,
@@ -26,17 +26,17 @@ export const moviesPageState: MoviesPageState = {
   movies: [],
 };
 
-export const moviesReducer = (
-  state = moviesPageState,
-  action: SearchMoviesActionTypes
-): MoviesPageState => {
+export const searchMoviePageReducer = (
+  state = searchMoviePageState,
+  action: SearchMoviePageActionTypes
+): SearchMoviePageState => {
   switch (action.type) {
     case SEARCH_MOVIES_FULFILLED:
-      const newAction = action as SearchMoviesFulfilledAction;
+      const typedAction = action as SearchMoviesFulfilledAction;
       return {
         ...state,
-        movies: newAction.payload.data,
-        totalMovies: newAction.payload.total,
+        movies: typedAction.payload.data,
+        totalMovies: typedAction.payload.total,
       };
     case CHANGE_SEARCH:
       return {

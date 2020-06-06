@@ -9,7 +9,7 @@ import { SearchMoviePageProps } from './search-movie-page-props.interface';
 import {
   searchMovies,
   changeSearch,
-} from '../../redux/actions/search-movies/search-movies';
+} from '../../redux/actions/search-movie-page/search-movie-page';
 
 import { Header } from '../../shared/header/header.component';
 import { HeaderTitle } from '../../shared/header/header-title/header-title.component';
@@ -65,7 +65,7 @@ const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
 
 const mapStateToProps = (state: AppState): SearchMoviePageProps => {
   return {
-    ...state.moviesPage,
+    ...state.searchMoviePage,
   };
 };
 

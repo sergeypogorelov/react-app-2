@@ -1,3 +1,4 @@
+import { GLOBALS } from '../../../core/constants/globals';
 import {
   LOAD_MOVIE,
   LOAD_MOVIE_PENDING,
@@ -9,24 +10,24 @@ import {
   LOAD_MOVIES_BY_GENRE_REJECTED,
 } from '../action-types';
 
-import { Movie } from '../../../core/interfaces/movie/movie.interface';
-
-import { moviesApiInstance } from '../../../core/api/movies/movies-api.class';
-import { MoviesResponse } from '../../../core/interfaces/movie/movies-response.interface';
 import { SearchBy } from '../../../core/enums/search-by.enum';
-import { GLOBALS } from '../../../core/constants/globals';
+
+import { Movie } from '../../../core/interfaces/movie/movie.interface';
+import { MoviesResponse } from '../../../core/interfaces/movie/movies-response.interface';
+
+import { moviesApi } from '../../../core/api/movies/movies-api.class';
 
 export const loadMovie = (id: number): LoadMovieAction => {
   return {
     type: LOAD_MOVIE,
-    payload: moviesApiInstance.getById(id),
+    payload: moviesApi.getById(id),
   };
 };
 
 export const loadMovieByGenre = (genre: string): LoadMoviesByGenreAction => {
   return {
     type: LOAD_MOVIES_BY_GENRE,
-    payload: moviesApiInstance.getAll({
+    payload: moviesApi.getAll({
       search: genre,
       searchBy: SearchBy.Genres,
       limit: GLOBALS.moviesPerPage,
@@ -70,7 +71,7 @@ export interface LoadMoviesByGenreRejectedAction {
   type: typeof LOAD_MOVIES_BY_GENRE_REJECTED;
 }
 
-export type ViewMovieActionTypes =
+export type ViewMoviePageActionTypes =
   | LoadMovieAction
   | LoadMoviePendingAction
   | LoadMovieFulfilledAction

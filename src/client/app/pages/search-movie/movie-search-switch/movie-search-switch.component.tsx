@@ -7,7 +7,7 @@ import { AppState } from '../../../redux/reducers';
 import { SwitchProps } from '../../../shared/switch-container/switch/switch-props.interface';
 import { MovieSearchSwitchProps } from './movie-search-switch-props.interface';
 
-import { changeSearchBy } from '../../../redux/actions/search-movies/search-movies';
+import { changeSearchBy } from '../../../redux/actions/search-movie-page/search-movie-page';
 
 import { SwitchContainer } from '../../../shared/switch-container/switch-container.component';
 
@@ -41,7 +41,7 @@ const MovieSearchSwitchFunc: FunctionComponent<MovieSearchSwitchProps> = ({
 
 const mapStateToProps = (state: AppState): MovieSearchSwitchProps => {
   return {
-    value: state.moviesPage.searchBy,
+    value: state.searchMoviePage.searchBy,
   };
 };
 
