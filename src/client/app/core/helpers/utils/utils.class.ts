@@ -16,4 +16,8 @@ export class Utils {
       (fullMatch, match) => params[match]
     );
   }
+
+  static deepCopy<T>(source: T): T {
+    return JSON.parse(JSON.stringify(source));
+  }
 }
