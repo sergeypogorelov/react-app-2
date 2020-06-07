@@ -49,6 +49,7 @@ const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
       <Header>
         <HeaderTitle id={headerTitleId}>FIND YOUR MOVIE</HeaderTitle>
         <MovieSearch
+          search={search}
           controlLabeledBy={[headerTitleId]}
           onSearchFormSubmit={handleSearchFormSubmit}
         />

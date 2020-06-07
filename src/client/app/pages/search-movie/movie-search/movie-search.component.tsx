@@ -11,12 +11,13 @@ import React, {
 import { MovieSearchProps } from './movie-search-props.interface';
 
 export const MovieSearch: FunctionComponent<MovieSearchProps> = ({
+  search,
   controlLabeledBy,
   onSearchFormSubmit,
 }) => {
   const ariaLabeledBy = controlLabeledBy ? controlLabeledBy.join(' ') : null;
 
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState(search);
 
   const handleSearchFormSubmit = useCallback(
     (ev: FormEvent<HTMLFormElement>) => {
