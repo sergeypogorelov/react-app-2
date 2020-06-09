@@ -4,11 +4,16 @@ import React, { FunctionComponent } from 'react';
 
 import { Switch } from './switch/switch.component';
 
-export const SwitchContainer: FunctionComponent<{}> = ({ children }) => {
+import { SwitchContainerProps } from './switch-container-props.interface';
+
+export const SwitchContainer: FunctionComponent<SwitchContainerProps> = ({
+  switchProps,
+  children,
+}) => {
   return (
     <div className="switch-container d-flex align-items-center">
       <label className="switch-container-label my-0">{children}</label>
-      <Switch />
+      <Switch {...switchProps} />
     </div>
   );
 };

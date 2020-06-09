@@ -2,48 +2,56 @@ import './movie-details.component.scss';
 
 import React, { FunctionComponent } from 'react';
 
-import { imageKillBill } from '../../../constants/assets-urls';
-
 import { MovieAdditionalInfoProps } from './movie-additional-info/movie-additional-info-props.interface';
+import { MovieDetailsProps } from './movie-details-props.interface';
 
 import { HeaderTitle } from '../../../shared/header/header-title/header-title.component';
+import { Image } from '../../../shared/image/image.component';
 import { MovieAdditionalInfo } from './movie-additional-info/movie-additional-info.component';
 
-export const MovieDetails: FunctionComponent<{}> = () => {
+export const MovieDetails: FunctionComponent<MovieDetailsProps> = ({
+  movie,
+}) => {
+  if (!movie) {
+    return null;
+  }
+
+  const {
+    release_date,
+    runtime,
+    poster_path,
+    title,
+    vote_average,
+    tagline,
+    overview,
+  } = movie;
+
   const items: MovieAdditionalInfoProps[] = [
     {
-      value: '1994',
+      value: new Date(release_date).getFullYear().toString(),
       unit: 'year',
     },
     {
-      value: '154',
+      value: runtime.toString(),
       unit: 'min',
     },
   ];
 
   return (
     <div className="movie-details d-flex">
-      <img className="movie-details-poster" src={imageKillBill} />
+      <Image className="movie-details-poster" src={poster_path} />
       <div className="movie-details-info">
         <div className="movie-details-title d-flex align-items-center">
-          <HeaderTitle>Kill Bill: Vol 2</HeaderTitle>
-          <div className="movie-details-rating">4.3</div>
+          <HeaderTitle>{title}</HeaderTitle>
+          <div className="movie-details-rating">{vote_average}</div>
         </div>
-        <div className="movie-details-subtitle">Oscar winning Movie</div>
+        <div className="movie-details-subtitle">{tagline}</div>
         <div className="movie-details-additional">
           {items.map((item, index) => (
             <MovieAdditionalInfo key={index} {...item} />
           ))}
         </div>
-        <div className="movie-details-description">
-          Pulp Fiction is a 1994 American crime film written and directed by
-          Quentin Tarantino; it is based on a story by Tarantino and Roger
-          Avary.[4] Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim
-          Roth, Ving Rhames, and Uma Thurman, it tells several stories of
-          criminal Los Angeles. The film's title refers to the pulp magazines
-          and hardboiled crime novels popular during the mid-20th century, known
-          for their graphic violence and punchy dialogue.
-        </div>
+        <div className="movie-details-description">{overview}</div>
       </div>
     </div>
   );

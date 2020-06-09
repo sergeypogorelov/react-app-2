@@ -7,20 +7,24 @@ exports[`SwitchContainer component should render correctly 1`] = `
   <label
     className="switch-container-label my-0"
   >
-    test
+    children
   </label>
   <div
     className="switch d-flex"
   >
     <button
       className="switch-item switch-item-left active"
+      onClick={[Function]}
+      type="button"
     >
-      Title
+      left label
     </button>
     <button
       className="switch-item switch-item-right"
+      onClick={[Function]}
+      type="button"
     >
-      Genre
+      right label
     </button>
   </div>
 </div>
