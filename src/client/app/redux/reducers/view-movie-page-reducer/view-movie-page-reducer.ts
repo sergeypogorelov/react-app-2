@@ -13,6 +13,7 @@ import {
 
 export const viewMoviePageState: ViewMoviePageState = {
   movie: null,
+  movieNotFound: false,
   moviesByGenre: [],
 };
 
@@ -22,8 +23,20 @@ export const viewMoviePageReducer = (
 ): ViewMoviePageState => {
   switch (action.type) {
     case LOAD_MOVIE_FULFILLED:
+      const loadMovieFulfilledAction = action as LoadMovieFulfilledAction;
+
+      if (!loadMovieFulfilledAction.payload.id) {
+        return {
+          ...state,
+          movie: null,
+          movieNotFound: true,
+          moviesByGenre: [],
+        };
+      }
+
       return {
         ...state,
+        movieNotFound: false,
         movie: (action as LoadMovieFulfilledAction).payload,
       };
     case LOAD_MOVIES_BY_GENRE_FULFILLED:
