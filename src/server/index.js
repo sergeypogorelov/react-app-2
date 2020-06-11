@@ -14,7 +14,11 @@ const BUILD_FOLDER = foldersByEnv[ENV];
 const staticPath = path.resolve(__dirname, `../../${BUILD_FOLDER}`);
 app.use(express.static(staticPath));
 
-app.use('/', (req, res) => {
+app.get('*', (req, res, next) => {
+  if (req.url.includes('.')) {
+    return next();
+  }
+
   res.sendFile(path.resolve(__dirname, `../../${BUILD_FOLDER}/index.html`));
 });
 

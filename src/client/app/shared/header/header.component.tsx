@@ -12,16 +12,19 @@ import { TitleMain } from '../title-main/title-main.component';
 export const Header: FunctionComponent<HeaderProps> = ({
   children,
   search,
+  searchShown,
 }) => {
+  const searchValue = search || '';
+
   return (
     <div className="header">
       <div className="header-logo">
         <TitleMain />
       </div>
-      {search && (
+      {searchShown && (
         <Link
           className="header-search"
-          to={`/${urlFragments.searchMovie}/${search}`}
+          to={`/${urlFragments.searchMovie}/${searchValue}`}
         />
       )}
       <div className="header-content">{children}</div>

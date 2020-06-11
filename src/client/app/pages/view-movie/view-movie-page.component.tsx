@@ -52,7 +52,7 @@ const ViewMoviePageFunc: FunctionComponent<ViewMoviePageProps> = ({
 
   return (
     <div className="search-movie-page">
-      <Header search={lastSearch}>
+      <Header search={lastSearch} searchShown>
         <MovieDetails movie={movie} />
       </Header>
       <InfoContainer>
