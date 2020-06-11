@@ -25,11 +25,3 @@ export default (initialState: AppState) => {
     persistor,
   };
 };
-
-// export const configureStore = (initialState: AppState) => {
-//   return createStore(
-//     rootReducer,
-//     initialState,
-//     applyMiddleware(reduxPromiseMiddleware)
-//   );
-// };

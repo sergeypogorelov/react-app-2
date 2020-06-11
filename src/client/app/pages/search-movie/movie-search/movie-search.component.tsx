@@ -2,7 +2,6 @@ import './movie-search.component.scss';
 
 import React, {
   FunctionComponent,
-  useState,
   useCallback,
   ChangeEvent,
   FormEvent,
@@ -14,24 +13,23 @@ export const MovieSearch: FunctionComponent<MovieSearchProps> = ({
   search,
   controlLabeledBy,
   onSearchFormSubmit,
+  onSearchValueChange,
 }) => {
   const ariaLabeledBy = controlLabeledBy ? controlLabeledBy.join(' ') : null;
-
-  const [searchValue, setSearchValue] = useState(search);
 
   const handleSearchFormSubmit = useCallback(
     (ev: FormEvent<HTMLFormElement>) => {
       ev.preventDefault();
       if (onSearchFormSubmit) {
-        onSearchFormSubmit(searchValue);
+        onSearchFormSubmit(search);
       }
     },
-    [searchValue]
+    [onSearchFormSubmit, search]
   );
 
   const handleSearchChange = useCallback(
-    (ev: ChangeEvent<HTMLInputElement>) => setSearchValue(ev.target.value),
-    []
+    (ev: ChangeEvent<HTMLInputElement>) => onSearchValueChange(ev.target.value),
+    [onSearchValueChange]
   );
 
   return (
@@ -39,7 +37,7 @@ export const MovieSearch: FunctionComponent<MovieSearchProps> = ({
       <input
         className="movie-search-control"
         aria-labelledby={ariaLabeledBy}
-        value={searchValue}
+        value={search}
         onChange={handleSearchChange}
       />
       <button className="movie-search-button">Search</button>

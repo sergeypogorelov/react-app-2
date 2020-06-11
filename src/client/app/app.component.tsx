@@ -1,6 +1,14 @@
 import React from 'react';
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+
+import { urlFragments } from './core/constants/url-fragments';
 
 import { initialState } from './redux/reducers';
 import configureStore from './redux/configure-store';
@@ -8,18 +16,37 @@ import configureStore from './redux/configure-store';
 import { Page } from './layout/page.component';
 import { SearchMoviePage } from './pages/search-movie/search-movie-page.component';
 import { ViewMoviePage } from './pages/view-movie/view-movie-page.component';
+import { NotFoundPage } from './pages/not-found/not-found-page.component';
 
 const { store, persistor } = configureStore(initialState);
 
 export const App = () => {
   return (
     <ReduxProvider store={store}>
-      <PersistGate persistor={persistor}>
+      {/* <PersistGate persistor={persistor}> */}
+      <Router>
         <Page>
-          <SearchMoviePage />
-          {/* <ViewMoviePage /> */}
+          <Switch>
+            <Route path="/" exact>
+              <Redirect to={`/${urlFragments.searchMovie}`} />
+            </Route>
+            <Route
+              path={`/${urlFragments.searchMovie}/:search`}
+              component={SearchMoviePage}
+            />
+            <Route path={`/${urlFragments.searchMovie}`}>
+              <SearchMoviePage />
+            </Route>
+            <Route path={`/${urlFragments.viewMovie}/:movieId`}>
+              <ViewMoviePage />
+            </Route>
+            <Route path="**">
+              <NotFoundPage />
+            </Route>
+          </Switch>
         </Page>
-      </PersistGate>
+      </Router>
+      {/* </PersistGate> */}
     </ReduxProvider>
   );
 };

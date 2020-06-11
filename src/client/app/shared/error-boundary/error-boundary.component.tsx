@@ -22,7 +22,7 @@ export class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
   render() {
     return this.state.hasError ? (
       <ModalAlert title="Error" onClose={this.handleOnModalClose}>
-        <p className="h5 text-center m-0">
+        <p className="h5 text-center text-dark m-0">
           Something went wrong. Click OK to reload the page.
         </p>
       </ModalAlert>
