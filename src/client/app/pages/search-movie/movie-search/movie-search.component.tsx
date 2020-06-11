@@ -2,34 +2,41 @@ import './movie-search.component.scss';
 
 import React, {
   FunctionComponent,
-  useCallback,
-  ChangeEvent,
   FormEvent,
+  useCallback,
+  useRef,
+  useEffect,
 } from 'react';
 
 import { MovieSearchProps } from './movie-search-props.interface';
+import { connect, useDispatch } from 'react-redux';
+import { AppState } from '../../../redux/reducers';
+import { changeSearch } from '../../../redux/actions/search-movie-page/search-movie-page';
 
-export const MovieSearch: FunctionComponent<MovieSearchProps> = ({
+const MovieSearchFunc: FunctionComponent<MovieSearchProps> = ({
   search,
   controlLabeledBy,
-  onSearchFormSubmit,
-  onSearchValueChange,
 }) => {
   const ariaLabeledBy = controlLabeledBy ? controlLabeledBy.join(' ') : null;
+
+  const dispatch = useDispatch();
+
+  const controlRef = useRef(null);
+
+  useEffect(() => {
+    controlRef.current.value = search || '';
+  }, []);
+
+  useEffect(() => {
+    controlRef.current.value = search || '';
+  }, [search]);
 
   const handleSearchFormSubmit = useCallback(
     (ev: FormEvent<HTMLFormElement>) => {
       ev.preventDefault();
-      if (onSearchFormSubmit) {
-        onSearchFormSubmit(search);
-      }
+      dispatch(changeSearch(controlRef.current.value));
     },
-    [onSearchFormSubmit, search]
-  );
-
-  const handleSearchChange = useCallback(
-    (ev: ChangeEvent<HTMLInputElement>) => onSearchValueChange(ev.target.value),
-    [onSearchValueChange]
+    [controlRef]
   );
 
   return (
@@ -37,10 +44,21 @@ export const MovieSearch: FunctionComponent<MovieSearchProps> = ({
       <input
         className="movie-search-control"
         aria-labelledby={ariaLabeledBy}
-        value={search}
-        onChange={handleSearchChange}
+        ref={controlRef}
       />
       <button className="movie-search-button">Search</button>
     </form>
   );
 };
+
+const mapStateToProps = (
+  state: AppState,
+  ownProps: MovieSearchProps
+): MovieSearchProps => {
+  return {
+    ...ownProps,
+    search: state.searchMoviePage.search,
+  };
+};
+
+export const MovieSearch = connect(mapStateToProps)(MovieSearchFunc);
