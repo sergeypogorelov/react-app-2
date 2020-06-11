@@ -23,6 +23,7 @@ exports[`MovieDetails component should render correctly 1`] = `
         </span>
       </p>
     </div>
+    
     <div
       className="header-content"
     />

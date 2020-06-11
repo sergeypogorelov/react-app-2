@@ -7,6 +7,13 @@ import { SearchMoviePage } from './search-movie-page.component';
 import { SearchBy } from '../../core/enums/search-by.enum';
 import { SortBy } from '../../core/enums/sort-by.enum';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
+    search: '',
+  }),
+}));
+
 const mockStore = configureStore();
 
 test('SearchMoviePage component should render correctly', () => {

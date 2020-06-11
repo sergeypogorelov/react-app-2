@@ -5,6 +5,13 @@ import configureStore from 'redux-mock-store';
 
 import { ViewMoviePage } from './view-movie-page.component';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
+    movieId: 1,
+  }),
+}));
+
 const mockStore = configureStore();
 
 test('MovieDetails component should render correctly', () => {
@@ -12,6 +19,9 @@ test('MovieDetails component should render correctly', () => {
     viewMoviePage: {
       movie: null,
       moviesByGenre: [],
+    },
+    searchMoviePage: {
+      search: '',
     },
   });
 
