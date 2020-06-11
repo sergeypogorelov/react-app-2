@@ -1,11 +1,12 @@
 import './movie-item.component.scss';
 
 import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 import { MovieItemProps } from './movie-item-props.interface';
 
 import { Image } from '../../image/image.component';
-import { Link } from 'react-router-dom';
+
 import { urlFragments } from '../../../core/constants/url-fragments';
 
 export const MovieItem: FunctionComponent<MovieItemProps> = ({ item }) => {

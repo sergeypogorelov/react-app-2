@@ -26,16 +26,20 @@ export const MovieDetails: FunctionComponent<MovieDetailsProps> = ({
     overview,
   } = movie;
 
-  const items: MovieAdditionalInfoProps[] = [
+  let items: MovieAdditionalInfoProps[] = [
     {
-      value: new Date(release_date).getFullYear().toString(),
+      value: release_date
+        ? new Date(release_date).getFullYear().toString()
+        : null,
       unit: 'year',
     },
     {
-      value: runtime.toString(),
+      value: runtime ? runtime.toString() : null,
       unit: 'min',
     },
   ];
+
+  items = items.filter((i) => i.value);
 
   return (
     <div className="movie-details d-flex">

@@ -22,15 +22,19 @@ const ViewMoviePageFunc: FunctionComponent<ViewMoviePageProps> = ({
   movie,
   movieNotFound,
   moviesByGenre,
+  lastSearch,
 }) => {
   const dispatch = useDispatch();
 
   const { movieId: movieIdParam } = useParams();
 
   useEffect(() => {
-    // dispatch(loadMovie(284054));
     dispatch(loadMovie(movieIdParam));
   }, []);
+
+  useEffect(() => {
+    dispatch(loadMovie(movieIdParam));
+  }, [movieIdParam]);
 
   useEffect(() => {
     if (movie) {
@@ -48,7 +52,7 @@ const ViewMoviePageFunc: FunctionComponent<ViewMoviePageProps> = ({
 
   return (
     <div className="search-movie-page">
-      <Header>
+      <Header search={lastSearch}>
         <MovieDetails movie={movie} />
       </Header>
       <InfoContainer>
@@ -64,6 +68,7 @@ const ViewMoviePageFunc: FunctionComponent<ViewMoviePageProps> = ({
 const mapStateToProps = (state: AppState): ViewMoviePageProps => {
   return {
     ...state.viewMoviePage,
+    lastSearch: state.searchMoviePage.search,
   };
 };
 
