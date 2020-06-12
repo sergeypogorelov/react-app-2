@@ -23,7 +23,11 @@ exports[`MovieDetails component should render correctly 1`] = `
         </span>
       </p>
     </div>
-    
+    <a
+      className="header-search"
+      href="/search/"
+      onClick={[Function]}
+    />
     <div
       className="header-content"
     />

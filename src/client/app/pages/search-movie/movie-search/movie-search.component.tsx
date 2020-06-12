@@ -24,11 +24,15 @@ const MovieSearchFunc: FunctionComponent<MovieSearchProps> = ({
   const controlRef = useRef(null);
 
   useEffect(() => {
-    controlRef.current.value = search || '';
+    if (controlRef.current) {
+      controlRef.current.value = search || '';
+    }
   }, []);
 
   useEffect(() => {
-    controlRef.current.value = search || '';
+    if (controlRef.current) {
+      controlRef.current.value = search || '';
+    }
   }, [search]);
 
   const handleSearchFormSubmit = useCallback(

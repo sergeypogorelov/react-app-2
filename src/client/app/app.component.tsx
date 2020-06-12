@@ -23,31 +23,31 @@ const { store, persistor } = configureStore(initialState);
 export const App = () => {
   return (
     <ReduxProvider store={store}>
-      {/* <PersistGate persistor={persistor}> */}
-      <Router>
-        <Page>
-          <Switch>
-            <Route path="/" exact>
-              <Redirect to={`/${urlFragments.searchMovie}`} />
-            </Route>
-            <Route
-              path={`/${urlFragments.searchMovie}/:search`}
-              component={SearchMoviePage}
-            />
-            <Route path={`/${urlFragments.searchMovie}`}>
-              <SearchMoviePage />
-            </Route>
-            <Route
-              path={`/${urlFragments.viewMovie}/:movieId`}
-              component={ViewMoviePage}
-            />
-            <Route path="**">
-              <NotFoundPage />
-            </Route>
-          </Switch>
-        </Page>
-      </Router>
-      {/* </PersistGate> */}
+      <PersistGate persistor={persistor}>
+        <Router>
+          <Page>
+            <Switch>
+              <Route path="/" exact>
+                <Redirect to={`/${urlFragments.searchMovie}`} />
+              </Route>
+              <Route
+                path={`/${urlFragments.searchMovie}/:search`}
+                component={SearchMoviePage}
+              />
+              <Route path={`/${urlFragments.searchMovie}`}>
+                <SearchMoviePage />
+              </Route>
+              <Route
+                path={`/${urlFragments.viewMovie}/:movieId`}
+                component={ViewMoviePage}
+              />
+              <Route path="**">
+                <NotFoundPage />
+              </Route>
+            </Switch>
+          </Page>
+        </Router>
+      </PersistGate>
     </ReduxProvider>
   );
 };

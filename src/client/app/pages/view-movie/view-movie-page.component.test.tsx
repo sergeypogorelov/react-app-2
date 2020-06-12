@@ -1,4 +1,5 @@
 import React from 'react';
+import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
@@ -28,7 +29,9 @@ test('MovieDetails component should render correctly', () => {
   const json = renderer
     .create(
       <Provider store={store}>
-        <ViewMoviePage />
+        <StaticRouter>
+          <ViewMoviePage />
+        </StaticRouter>
       </Provider>
     )
     .toJSON();
