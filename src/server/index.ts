@@ -1,7 +1,7 @@
-const path = require('path');
-const express = require('express');
+import path from 'path';
+import express from 'express';
 
-const foldersByEnv = {
+const foldersByEnv: Record<string, string> = {
   DEV: 'dist-dev',
   PROD: 'dist-prod',
 };
