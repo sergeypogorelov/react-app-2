@@ -7,10 +7,11 @@ import React, {
   useRef,
   useEffect,
 } from 'react';
+import { connect, useDispatch } from 'react-redux';
 
 import { MovieSearchProps } from './movie-search-props.interface';
-import { connect, useDispatch } from 'react-redux';
 import { AppState } from '../../../redux/reducers';
+
 import { changeSearch } from '../../../redux/actions/search-movie-page/search-movie-page';
 
 const MovieSearchFunc: FunctionComponent<MovieSearchProps> = ({
@@ -22,12 +23,6 @@ const MovieSearchFunc: FunctionComponent<MovieSearchProps> = ({
   const dispatch = useDispatch();
 
   const controlRef = useRef(null);
-
-  useEffect(() => {
-    if (controlRef.current) {
-      controlRef.current.value = search || '';
-    }
-  }, []);
 
   useEffect(() => {
     if (controlRef.current) {
