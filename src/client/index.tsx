@@ -3,14 +3,16 @@
 import './styles/index.scss';
 
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import { ErrorBoundary } from './app/shared/error-boundary/error-boundary.component';
-import { App } from './app/app.component';
+import { initialState } from './app/redux/reducers';
+import configureStore from './app/redux/configure-store';
 
-render(
-  <ErrorBoundary>
-    <App />
-  </ErrorBoundary>,
-  document.getElementById('root')
-);
+import { app } from './app/app.hoc';
+
+const store = configureStore(initialState);
+
+const App = app(store, BrowserRouter);
+
+hydrate(<App />, document.getElementById('root'));
