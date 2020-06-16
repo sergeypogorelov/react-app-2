@@ -26,7 +26,7 @@ export const App = () => {
           path={`/${urlFragments.viewMovie}/:movieId`}
           component={ViewMoviePage}
         />
-        <Route path="**">
+        <Route path="*">
           <NotFoundPage />
         </Route>
       </Switch>

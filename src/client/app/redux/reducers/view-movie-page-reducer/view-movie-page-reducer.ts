@@ -10,6 +10,8 @@ import {
   LoadMovieFulfilledAction,
   LoadMoviesByGenreFulfilledAction,
 } from '../../actions/view-movie-page/view-movie-page';
+import { Movie } from '../../../core/interfaces/movie/movie.interface';
+import { MoviesResponse } from '../../../core/interfaces/movie/movies-response.interface';
 
 export const viewMoviePageState: ViewMoviePageState = {
   movie: null,
@@ -21,11 +23,15 @@ export const viewMoviePageReducer = (
   state = viewMoviePageState,
   action: ViewMoviePageActionTypes
 ): ViewMoviePageState => {
+  let movie: Movie;
+  let moviesResponse: MoviesResponse;
+
   switch (action.type) {
     case LOAD_MOVIE_FULFILLED:
       const loadMovieFulfilledAction = action as LoadMovieFulfilledAction;
+      movie = loadMovieFulfilledAction.payload;
 
-      if (!loadMovieFulfilledAction.payload.id) {
+      if (!movie.id) {
         return {
           ...state,
           movie: null,
@@ -36,14 +42,15 @@ export const viewMoviePageReducer = (
 
       return {
         ...state,
+        movie,
         movieNotFound: false,
-        movie: (action as LoadMovieFulfilledAction).payload,
       };
     case LOAD_MOVIES_BY_GENRE_FULFILLED:
+      moviesResponse = (action as LoadMoviesByGenreFulfilledAction).payload;
+
       return {
         ...state,
-        moviesByGenre: (action as LoadMoviesByGenreFulfilledAction).payload
-          .data,
+        moviesByGenre: moviesResponse.data,
       };
     default:
       return state;
