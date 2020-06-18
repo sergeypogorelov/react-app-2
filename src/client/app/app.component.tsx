@@ -19,9 +19,10 @@ export const App = () => {
           path={`/${urlFragments.searchMovie}/:search`}
           component={SearchMoviePage}
         />
-        <Route path={`/${urlFragments.searchMovie}`}>
-          <SearchMoviePage />
-        </Route>
+        <Route
+          path={`/${urlFragments.searchMovie}`}
+          component={SearchMoviePage}
+        />
         <Route
           path={`/${urlFragments.viewMovie}/:movieId`}
           component={ViewMoviePage}

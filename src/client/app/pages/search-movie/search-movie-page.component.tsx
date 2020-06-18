@@ -1,8 +1,7 @@
 import './search-movie-page.component.scss';
 
-import React, { FunctionComponent, useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import { urlFragments } from '../../core/constants/url-fragments';
 
@@ -22,50 +21,73 @@ import { InfoContainer } from '../../shared/info-container/info-container.compon
 import { InfoText } from '../../shared/info-container/info-text/info-text.component';
 import { MoviesList } from '../../shared/movies-list/movies-list.component';
 import { SearchMovieSort } from './search-movie-sort/search-movie-sort.component';
+import { Utils } from '../../core/helpers/utils/utils.class';
 
-const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
-  search,
-  searchBy,
-  sortBy,
-  movies,
-  totalMovies,
-}) => {
-  const headerTitleId = 'searchLabel';
+const headerTitleId = 'searchLabel';
 
-  const dispatch = useDispatch();
+class SearchMoviePageClass extends React.Component<SearchMoviePageProps> {
+  componentDidMount() {
+    const { dispatch, match } = this.props;
 
-  const history = useHistory();
+    dispatch(changeSearch(match.params.search));
+  }
 
-  const { search: searchParam } = useParams();
+  componentDidUpdate(prevProps: SearchMoviePageProps) {
+    const {
+      search: currSearch,
+      searchBy: currSearchBy,
+      sortBy: currSortBy,
+      dispatch,
+    } = this.props;
 
-  useEffect(() => {
-    dispatch(changeSearch(searchParam));
-  }, []);
+    const {
+      search: prevSearch,
+      searchBy: prevSearchBy,
+      sortBy: prevSortBy,
+    } = prevProps;
 
-  useEffect(() => {
-    if (search) {
-      history.push(
-        `/${urlFragments.searchMovie}/${encodeURIComponent(search)}`
-      );
-      dispatch(searchMovies(search, searchBy, sortBy));
+    const currArr = [currSearch, currSearchBy, currSortBy];
+    const prevArr = [prevSearch, prevSearchBy, prevSortBy];
+
+    if (!Utils.arrayEqual(currArr, prevArr)) {
+      if (currSearch) {
+        this.redirectToNewSearch(currSearch);
+
+        dispatch(searchMovies(currSearch, currSearchBy, currSortBy));
+      }
     }
-  }, [dispatch, search, searchBy, sortBy]);
+  }
 
-  return (
-    <div className="search-movie-page">
-      <Header>
-        <HeaderTitle id={headerTitleId}>FIND YOUR MOVIE</HeaderTitle>
-        <MovieSearch search={searchParam} controlLabeledBy={[headerTitleId]} />
-        <MovieSearchSwitch />
-      </Header>
-      <InfoContainer>
-        <InfoText>{totalMovies} movies found</InfoText>
-        <SearchMovieSort />
-      </InfoContainer>
-      <MoviesList movies={movies} />
-    </div>
-  );
-};
+  render() {
+    const { movies, totalMovies, match } = this.props;
+
+    return (
+      <div className="search-movie-page">
+        <Header>
+          <HeaderTitle id={headerTitleId}>FIND YOUR MOVIE</HeaderTitle>
+          <MovieSearch
+            search={match.params.search}
+            controlLabeledBy={[headerTitleId]}
+          />
+          <MovieSearchSwitch />
+        </Header>
+        <InfoContainer>
+          <InfoText>{totalMovies} movies found</InfoText>
+          <SearchMovieSort />
+        </InfoContainer>
+        <MoviesList movies={movies} />
+      </div>
+    );
+  }
+
+  private redirectToNewSearch(newSearch: string) {
+    newSearch = newSearch || '';
+
+    this.props.history.push(
+      `/${urlFragments.searchMovie}/${encodeURIComponent(newSearch)}`
+    );
+  }
+}
 
 const mapStateToProps = (state: AppState): SearchMoviePageProps => {
   return {
@@ -73,4 +95,4 @@ const mapStateToProps = (state: AppState): SearchMoviePageProps => {
   };
 };
 
-export const SearchMoviePage = connect(mapStateToProps)(SearchMoviePageFunc);
+export const SearchMoviePage = connect(mapStateToProps)(SearchMoviePageClass);
