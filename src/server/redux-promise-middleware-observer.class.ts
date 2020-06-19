@@ -16,9 +16,7 @@ export class ReduxPromiseMiddlewareObserver {
   }
 
   registerPromise(promise: Promise<any>) {
-    console.log('Register promise');
     if (this.enabled) {
-      console.log('Promise registered');
       this._promises.push(promise);
     }
   }
