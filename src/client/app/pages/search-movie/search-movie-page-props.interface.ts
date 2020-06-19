@@ -1,6 +1,4 @@
-import { DispatchProp } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
-
+import { CommonProps } from '../../core/interfaces/common/common-props.interface';
 import { SearchMoviePageState } from '../../redux/interfaces/search-movie-page-state/search-movie-page-state.interface';
 
 interface MatchParams {
@@ -8,6 +6,5 @@ interface MatchParams {
 }
 
 export interface SearchMoviePageProps
-  extends Partial<DispatchProp>,
-    Partial<RouteComponentProps<MatchParams>>,
+  extends CommonProps<MatchParams>,
     SearchMoviePageState {}
