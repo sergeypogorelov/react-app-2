@@ -3,16 +3,18 @@
 import './styles/index.scss';
 
 import React from 'react';
-import { render } from 'react-dom';
+import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import { initialState } from './app/redux/reducers';
 import configureStore from './app/redux/configure-store';
+
+import { SSR } from './app/core/helpers/ssr/ssr.class';
 
 import { app } from './app/app.hoc';
 
-const store = configureStore(initialState);
-
+const store = configureStore(SSR.getPreloadedState());
 const App = app(store, BrowserRouter);
 
-render(<App />, document.getElementById('root'));
+hydrate(<App />, document.getElementById('root'));
+
+SSR.deletePreloadedState();

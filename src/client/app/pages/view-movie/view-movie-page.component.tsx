@@ -11,6 +11,8 @@ import {
   loadMovieByGenre,
 } from '../../redux/actions/view-movie-page/view-movie-page';
 
+import { SSR } from '../../core/helpers/ssr/ssr.class';
+
 import { Header } from '../../shared/header/header.component';
 import { InfoContainer } from '../../shared/info-container/info-container.component';
 import { InfoText } from '../../shared/info-container/info-text/info-text.component';
@@ -18,13 +20,38 @@ import { MoviesList } from '../../shared/movies-list/movies-list.component';
 import { MovieDetails } from './movie-details/movie-details.component';
 
 class ViewMoviePageClass extends React.Component<ViewMoviePageProps> {
+  componentWillMount() {
+    if (SSR.isOnClient || SSR.preventRequests) {
+      return;
+    }
+
+    const { dispatch, match } = this.props;
+    const loadMovieAction = loadMovie(+match.params.movieId);
+
+    loadMovieAction.payload.then((movie) => {
+      if (movie.id) {
+        dispatch(loadMovieByGenre(movie.genres[0]));
+      }
+    });
+
+    dispatch(loadMovieAction);
+  }
+
   componentDidMount() {
+    if (SSR.isBeingHydrated) {
+      return;
+    }
+
     const { dispatch, match } = this.props;
 
     dispatch(loadMovie(+match.params.movieId));
   }
 
   componentDidUpdate(prevProps: ViewMoviePageProps) {
+    if (SSR.isBeingHydrated) {
+      return;
+    }
+
     const { match: currMatch, movie: currMovie, dispatch } = this.props;
     const { match: prevMatch, movie: prevMovie } = prevProps;
 

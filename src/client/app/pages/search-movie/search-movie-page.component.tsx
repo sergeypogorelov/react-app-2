@@ -29,13 +29,15 @@ const headerTitleId = 'searchLabel';
 
 class SearchMoviePageClass extends React.Component<SearchMoviePageProps> {
   componentWillMount() {
-    if (SSR.isOnServer && !SSR.preventRequests) {
-      const { searchBy, sortBy, match, dispatch } = this.props;
-      const search = match.params.search;
+    if (SSR.isOnClient || SSR.preventRequests) {
+      return;
+    }
 
-      if (search) {
-        dispatch(searchMovies(search, searchBy, sortBy));
-      }
+    const { searchBy, sortBy, match, dispatch } = this.props;
+    const search = match.params.search;
+
+    if (search) {
+      dispatch(searchMovies(search, searchBy, sortBy));
     }
   }
 
@@ -46,6 +48,10 @@ class SearchMoviePageClass extends React.Component<SearchMoviePageProps> {
   }
 
   componentDidUpdate(prevProps: SearchMoviePageProps) {
+    if (SSR.isBeingHydrated) {
+      return;
+    }
+
     const {
       search: currSearch,
       searchBy: currSearchBy,
