@@ -29,7 +29,7 @@ const ENV = process.env.NODE_APP_ENV;
 const BUILD_FOLDER = foldersByEnv[ENV];
 
 const staticPath = path.resolve(__dirname, `../../${BUILD_FOLDER}`);
-app.use(express.static(staticPath));
+app.use(express.static(staticPath, { index: false }));
 
 app.get('*', (req, res, next) => {
   if (req.url.includes('.')) {
@@ -59,23 +59,18 @@ app.get('*', (req, res, next) => {
 
     SSR.preventRequests = false;
 
-    fs.readFile(
-      path.resolve(__dirname, `../../${BUILD_FOLDER}/index.html`),
-      'utf8',
-      (err, data) => {
-        if (err) {
-          throw err;
-        }
-
-        data = data.replace('${html}', html);
-        data = data.replace(
-          "'${state}'",
-          JSON.stringify(store.getState()).replace(/</g, '\\u003c')
-        );
-
-        res.status(200).send(data).end();
+    fs.readFile(path.resolve(staticPath, 'index.html'), 'utf8', (err, data) => {
+      if (err) {
+        throw err;
       }
-    );
+
+      const state = JSON.stringify(store.getState()).replace(/</g, '\\u003c');
+
+      data = data.replace('${html}', html);
+      data = data.replace("'${state}'", state);
+
+      res.status(200).send(data).end();
+    });
   });
 });
 
