@@ -1,7 +1,10 @@
 import './search-movie-page.component.scss';
 
-import React, { FunctionComponent, useCallback, useEffect } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
+
+import { urlFragments } from '../../core/constants/url-fragments';
 
 import { AppState } from '../../redux/reducers';
 import { SearchMoviePageProps } from './search-movie-page-props.interface';
@@ -31,15 +34,19 @@ const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
 
   const dispatch = useDispatch();
 
-  const handleSearchFormSubmit = useCallback(
-    (searchValue: string) => {
-      dispatch(changeSearch(searchValue));
-    },
-    [dispatch]
-  );
+  const history = useHistory();
+
+  const { search: searchParam } = useParams();
+
+  useEffect(() => {
+    dispatch(changeSearch(searchParam));
+  }, []);
 
   useEffect(() => {
     if (search) {
+      history.push(
+        `/${urlFragments.searchMovie}/${encodeURIComponent(search)}`
+      );
       dispatch(searchMovies(search, searchBy, sortBy));
     }
   }, [dispatch, search, searchBy, sortBy]);
@@ -48,11 +55,7 @@ const SearchMoviePageFunc: FunctionComponent<SearchMoviePageProps> = ({
     <div className="search-movie-page">
       <Header>
         <HeaderTitle id={headerTitleId}>FIND YOUR MOVIE</HeaderTitle>
-        <MovieSearch
-          search={search}
-          controlLabeledBy={[headerTitleId]}
-          onSearchFormSubmit={handleSearchFormSubmit}
-        />
+        <MovieSearch search={searchParam} controlLabeledBy={[headerTitleId]} />
         <MovieSearchSwitch />
       </Header>
       <InfoContainer>

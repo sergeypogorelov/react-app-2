@@ -51,6 +51,8 @@ export const searchMovies = (
 };
 
 export const changeSearch = (newSearch: string): ChangeSearchAction => {
+  newSearch = newSearch || '';
+
   return {
     type: CHANGE_SEARCH,
     payload: newSearch,

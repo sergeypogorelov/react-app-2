@@ -27,7 +27,7 @@ describe('view movie page reducer', () => {
 
   it('should handle correctly action LOAD_MOVIE_FULFILLED', () => {
     const movie: Movie = {
-      id: 0,
+      id: 1,
       title: 'title',
       tagline: 'tagline',
       vote_average: 9,

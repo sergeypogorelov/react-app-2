@@ -21,6 +21,15 @@ $z-index-for-content: $z-index-for-bg + 1;
     left: 60px;
     z-index: $z-index-for-content;
   }
+  &-search {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    z-index: $z-index-for-content;
+    background-image: url('../../../assets/images/search.png');
+  }
   &-content {
     position: relative;
     z-index: $z-index-for-content;

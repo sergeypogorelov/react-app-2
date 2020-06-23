@@ -8,7 +8,6 @@ exports[`MovieSearch component should render correctly if labelled 1`] = `
   <input
     aria-labelledby="controlId"
     className="movie-search-control"
-    onChange={[Function]}
   />
   <button
     className="movie-search-button"
@@ -26,7 +25,6 @@ exports[`MovieSearch component should render correctly if unlabelled 1`] = `
   <input
     aria-labelledby={null}
     className="movie-search-control"
-    onChange={[Function]}
   />
   <button
     className="movie-search-button"

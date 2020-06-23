@@ -9,6 +9,6 @@ export interface Movie {
   overview: string;
   budget: number;
   revenue: number;
-  runtime: number;
+  runtime?: number;
   genres: string[];
 }

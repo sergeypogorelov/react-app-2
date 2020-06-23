@@ -39,8 +39,6 @@ exports[`SearchMoviePage component should render correctly 1`] = `
         <input
           aria-labelledby="searchLabel"
           className="movie-search-control"
-          onChange={[Function]}
-          value=""
         />
         <button
           className="movie-search-button"

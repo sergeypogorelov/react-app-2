@@ -1,6 +1,9 @@
 @import '../../../../styles/variables';
 
 .movie-item {
+  &:hover {
+    color: $c-default;
+  }
   &-poster {
     width: 325px;
     height: 425px;
@@ -26,6 +29,7 @@
     opacity: 0.5;
   }
   font-family: $f-medium;
+  color: $c-default;
   opacity: 0.7;
   overflow: hidden;
 }
