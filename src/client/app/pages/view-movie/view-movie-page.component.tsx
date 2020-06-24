@@ -98,4 +98,6 @@ const mapStateToProps = (state: AppState): ViewMoviePageProps => {
   };
 };
 
-export const ViewMoviePage = connect(mapStateToProps)(ViewMoviePageClass);
+const ViewMoviePage = connect(mapStateToProps)(ViewMoviePageClass);
+
+export default ViewMoviePage;

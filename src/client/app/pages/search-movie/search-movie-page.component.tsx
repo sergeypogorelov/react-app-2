@@ -114,4 +114,6 @@ const mapStateToProps = (state: AppState): SearchMoviePageProps => {
   };
 };
 
-export const SearchMoviePage = connect(mapStateToProps)(SearchMoviePageClass);
+const SearchMoviePage = connect(mapStateToProps)(SearchMoviePageClass);
+
+export default SearchMoviePage;

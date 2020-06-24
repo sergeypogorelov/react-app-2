@@ -1,12 +1,22 @@
 import React from 'react';
+import Loadable from 'react-loadable';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { urlFragments } from './core/constants/url-fragments';
 
+import { Loading } from './shared/loading/loading.component';
 import { Page } from './layout/page.component';
-import { SearchMoviePage } from './pages/search-movie/search-movie-page.component';
-import { ViewMoviePage } from './pages/view-movie/view-movie-page.component';
 import { NotFoundPage } from './pages/not-found/not-found-page.component';
+
+const LoadableSearchMoviePage = Loadable({
+  loader: () => import('./pages/search-movie/search-movie-page.component'),
+  loading: () => <Loading />,
+});
+
+const LoadableViewMoviePage = Loadable({
+  loader: () => import('./pages/view-movie/view-movie-page.component'),
+  loading: () => <Loading />,
+});
 
 export const App = () => {
   return (
@@ -17,15 +27,15 @@ export const App = () => {
         </Route>
         <Route
           path={`/${urlFragments.searchMovie}/:search`}
-          component={SearchMoviePage}
+          component={LoadableSearchMoviePage}
         />
         <Route
           path={`/${urlFragments.searchMovie}`}
-          component={SearchMoviePage}
+          component={LoadableSearchMoviePage}
         />
         <Route
           path={`/${urlFragments.viewMovie}/:movieId`}
-          component={ViewMoviePage}
+          component={LoadableViewMoviePage}
         />
         <Route path="*">
           <NotFoundPage />
