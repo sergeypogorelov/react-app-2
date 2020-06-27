@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useCallback } from 'react';
-import { useDispatch, connect } from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import { SortBy } from '../../../core/enums/sort-by.enum';
 
@@ -11,33 +11,28 @@ import { changeSortBy } from '../../../redux/actions/search-movie-page/search-mo
 
 import { SwitchContainer } from '../../../shared/switch-container/switch-container.component';
 
-const SearchMovieSortFunc: FunctionComponent<SearchMovieSortProps> = ({
-  value,
-}) => {
-  const dispatch = useDispatch();
+class SearchMovieSortClass extends React.Component<SearchMovieSortProps> {
+  render() {
+    const switchProps: SwitchProps = {
+      currentValue: this.props.value,
+      left: {
+        label: 'Release Date',
+        value: SortBy.ReleaseData,
+      },
+      right: {
+        label: 'Rating',
+        value: SortBy.Rating,
+      },
+      onChange: this.handleSwitchChagne,
+    };
 
-  const handleSwitchChagne = useCallback(
-    (newValue: string) => {
-      dispatch(changeSortBy(newValue as SortBy));
-    },
-    [dispatch]
-  );
+    return <SwitchContainer switchProps={switchProps}>SORT BY</SwitchContainer>;
+  }
 
-  const switchProps: SwitchProps = {
-    currentValue: value,
-    left: {
-      label: 'Release Date',
-      value: SortBy.ReleaseData,
-    },
-    right: {
-      label: 'Rating',
-      value: SortBy.Rating,
-    },
-    onChange: handleSwitchChagne,
+  handleSwitchChagne = (newValue: string) => {
+    this.props.dispatch(changeSortBy(newValue as SortBy));
   };
-
-  return <SwitchContainer switchProps={switchProps}>SORT BY</SwitchContainer>;
-};
+}
 
 const mapStateToProps = (state: AppState): SearchMovieSortProps => {
   return {
@@ -45,4 +40,4 @@ const mapStateToProps = (state: AppState): SearchMovieSortProps => {
   };
 };
 
-export const SearchMovieSort = connect(mapStateToProps)(SearchMovieSortFunc);
+export const SearchMovieSort = connect(mapStateToProps)(SearchMovieSortClass);

@@ -1,27 +1,18 @@
-import { createStore, applyMiddleware } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
+import { createStore, applyMiddleware, StoreEnhancer, Middleware } from 'redux';
 import reduxPromiseMiddleware from 'redux-promise-middleware';
-import storage from 'redux-persist/lib/storage';
 
 import { rootReducer, AppState } from './reducers';
 
-const persistCfg = {
-  key: 'root',
-  storage,
-};
+export default (initialState: AppState, ssrAdapter?: Middleware) => {
+  let storeEnhancer: StoreEnhancer;
 
-const persistedReducer = persistReducer(persistCfg, rootReducer);
+  if (ssrAdapter) {
+    storeEnhancer = applyMiddleware(ssrAdapter, reduxPromiseMiddleware);
+  } else {
+    storeEnhancer = applyMiddleware(reduxPromiseMiddleware);
+  }
 
-export default (initialState: AppState) => {
-  const store = createStore(
-    persistedReducer,
-    initialState,
-    applyMiddleware(reduxPromiseMiddleware)
-  );
-  const persistor = persistStore(store);
+  const store = createStore(rootReducer, initialState, storeEnhancer);
 
-  return {
-    store,
-    persistor,
-  };
+  return store;
 };

@@ -1,5 +1,5 @@
-import React, { FunctionComponent, useCallback } from 'react';
-import { useDispatch, connect } from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 
 import { SearchBy } from '../../../core/enums/search-by.enum';
 
@@ -11,33 +11,30 @@ import { changeSearchBy } from '../../../redux/actions/search-movie-page/search-
 
 import { SwitchContainer } from '../../../shared/switch-container/switch-container.component';
 
-const MovieSearchSwitchFunc: FunctionComponent<MovieSearchSwitchProps> = ({
-  value,
-}) => {
-  const dispatch = useDispatch();
+class MovieSearchSwitchClass extends React.Component<MovieSearchSwitchProps> {
+  render() {
+    const switchProps: SwitchProps = {
+      currentValue: this.props.value,
+      left: {
+        label: 'Title',
+        value: SearchBy.Title,
+      },
+      right: {
+        label: 'Genre',
+        value: SearchBy.Genres,
+      },
+      onChange: this.handleSwitchChagne,
+    };
 
-  const handleSwitchChagne = useCallback(
-    (newValue: string) => {
-      dispatch(changeSearchBy(newValue as SearchBy));
-    },
-    [dispatch]
-  );
+    return (
+      <SwitchContainer switchProps={switchProps}>SEARCH BY</SwitchContainer>
+    );
+  }
 
-  const switchProps: SwitchProps = {
-    currentValue: value,
-    left: {
-      label: 'Title',
-      value: SearchBy.Title,
-    },
-    right: {
-      label: 'Genre',
-      value: SearchBy.Genres,
-    },
-    onChange: handleSwitchChagne,
+  handleSwitchChagne = (newValue: string) => {
+    this.props.dispatch(changeSearchBy(newValue as SearchBy));
   };
-
-  return <SwitchContainer switchProps={switchProps}>SEARCH BY</SwitchContainer>;
-};
+}
 
 const mapStateToProps = (state: AppState): MovieSearchSwitchProps => {
   return {
@@ -46,5 +43,5 @@ const mapStateToProps = (state: AppState): MovieSearchSwitchProps => {
 };
 
 export const MovieSearchSwitch = connect(mapStateToProps)(
-  MovieSearchSwitchFunc
+  MovieSearchSwitchClass
 );

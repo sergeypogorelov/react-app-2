@@ -1,54 +1,59 @@
 import './movie-search.component.scss';
 
-import React, {
-  FunctionComponent,
-  FormEvent,
-  useCallback,
-  useRef,
-  useEffect,
-} from 'react';
-import { connect, useDispatch } from 'react-redux';
+import React, { FormEvent, createRef } from 'react';
+import { connect } from 'react-redux';
 
 import { MovieSearchProps } from './movie-search-props.interface';
 import { AppState } from '../../../redux/reducers';
 
 import { changeSearch } from '../../../redux/actions/search-movie-page/search-movie-page';
 
-const MovieSearchFunc: FunctionComponent<MovieSearchProps> = ({
-  search,
-  controlLabeledBy,
-}) => {
-  const ariaLabeledBy = controlLabeledBy ? controlLabeledBy.join(' ') : null;
+class MovieSearchClass extends React.Component<MovieSearchProps> {
+  componentDidMount() {
+    this.updateControlValue();
+  }
 
-  const dispatch = useDispatch();
+  componentDidUpdate(prevProps: MovieSearchProps) {
+    this.updateControlValue(prevProps.search);
+  }
 
-  const controlRef = useRef(null);
+  render() {
+    const { controlLabeledBy } = this.props;
 
-  useEffect(() => {
-    if (controlRef.current) {
-      controlRef.current.value = search || '';
+    const ariaLabeledBy = controlLabeledBy ? controlLabeledBy.join(' ') : null;
+
+    return (
+      <form className="movie-search" onSubmit={this.handleSearchFormSubmit}>
+        <input
+          className="movie-search-control"
+          aria-labelledby={ariaLabeledBy}
+          ref={this._controlRef}
+        />
+        <button className="movie-search-button">Search</button>
+      </form>
+    );
+  }
+
+  handleSearchFormSubmit = (ev: FormEvent<HTMLFormElement>) => {
+    ev.preventDefault();
+
+    this.props.dispatch(changeSearch(this._controlRef.current.value));
+  };
+
+  private _controlRef = createRef<HTMLInputElement>();
+
+  private updateControlValue(prevSearch?: string) {
+    const currSearch = this.props.search;
+    const controlRef = this._controlRef;
+
+    if (
+      controlRef.current &&
+      (typeof prevSearch === 'undefined' || currSearch !== prevSearch)
+    ) {
+      controlRef.current.value = currSearch || '';
     }
-  }, [search]);
-
-  const handleSearchFormSubmit = useCallback(
-    (ev: FormEvent<HTMLFormElement>) => {
-      ev.preventDefault();
-      dispatch(changeSearch(controlRef.current.value));
-    },
-    [controlRef]
-  );
-
-  return (
-    <form className="movie-search" onSubmit={handleSearchFormSubmit}>
-      <input
-        className="movie-search-control"
-        aria-labelledby={ariaLabeledBy}
-        ref={controlRef}
-      />
-      <button className="movie-search-button">Search</button>
-    </form>
-  );
-};
+  }
+}
 
 const mapStateToProps = (
   state: AppState,
@@ -60,4 +65,4 @@ const mapStateToProps = (
   };
 };
 
-export const MovieSearch = connect(mapStateToProps)(MovieSearchFunc);
+export const MovieSearch = connect(mapStateToProps)(MovieSearchClass);
