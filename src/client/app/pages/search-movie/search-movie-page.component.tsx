@@ -13,7 +13,6 @@ import {
   changeSearch,
 } from '../../redux/actions/search-movie-page/search-movie-page';
 
-import { SSR } from '../../core/helpers/ssr/ssr.class';
 import { Utils } from '../../core/helpers/utils/utils.class';
 
 import { Header } from '../../shared/header/header.component';
@@ -28,19 +27,6 @@ import { SearchMovieSort } from './search-movie-sort/search-movie-sort.component
 const headerTitleId = 'searchLabel';
 
 class SearchMoviePageClass extends React.Component<SearchMoviePageProps> {
-  componentWillMount() {
-    if (SSR.isOnClient || SSR.preventRequests) {
-      return;
-    }
-
-    const { searchBy, sortBy, match, dispatch } = this.props;
-    const search = match.params.search;
-
-    if (search) {
-      dispatch(searchMovies(search, searchBy, sortBy));
-    }
-  }
-
   componentDidMount() {
     const { dispatch, match } = this.props;
 
@@ -48,10 +34,6 @@ class SearchMoviePageClass extends React.Component<SearchMoviePageProps> {
   }
 
   componentDidUpdate(prevProps: SearchMoviePageProps) {
-    if (SSR.isBeingHydrated) {
-      return;
-    }
-
     const {
       search: currSearch,
       searchBy: currSearchBy,

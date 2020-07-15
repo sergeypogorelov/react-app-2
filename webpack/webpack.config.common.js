@@ -7,6 +7,10 @@ module.exports = webpackMerge(
     entry: {
       main: path.resolve(__dirname, '../src/client/index.tsx'),
     },
+    devServer: {
+      contentBase: path.resolve(__dirname, '../dist'),
+      port: 4200,
+    },
     module: {
       rules: [
         {
