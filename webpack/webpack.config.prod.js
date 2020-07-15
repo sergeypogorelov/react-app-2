@@ -11,7 +11,7 @@ module.exports = webpackMerge(webpackConfigCommon, {
   mode: 'production',
   devtool: false,
   output: {
-    path: path.resolve(__dirname, '../dist-prod'),
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash].js',
   },
   module: {
