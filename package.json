@@ -13,10 +13,8 @@
     "clean:modules": "rimraf ./node_modules",
     "test": "jest --watchAll",
     "test:coverage": "jest --coverage",
-    "pree2e": "run-s start:prod",
-    "e2e": "run-s cypress:run",
-    "pree2e:open": "run-s start:prod",
-    "e2e:open": "run-p cypress:open",
+    "e2e": "run-p start:prod cypress:run",
+    "e2e:open": "run-p start:prod cypress:open",
     "cypress:run": "cypress run",
     "cypress:open": "cypress open"
   },
